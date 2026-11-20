@@ -1,0 +1,61 @@
+﻿methode;id;question;position;rappel@3;rappel@5;rr;premier_resultat
+Recherche simple;1;J'ai perdu ma carte d'identité, que dois-je faire ?;1;1;1;1.0;loi_2024-22_CIN.pdf
+Recherche simple;2;Combien coûte le renouvellement d'une carte d'identité en bon état ?;1;1;1;1.0;CIN_renouvellement.pdf
+Recherche simple;3;Combien coûte le renouvellement d'une carte d'identité détériorée ?;1;1;1;1.0;CIN_renouvellement.pdf
+Recherche simple;4;Quels documents faut-il pour obtenir la carte d'identité pour la première fois ?;5;0;1;0.2;attestation_residence.pdf
+Recherche simple;5;À partir de quel âge la carte d'identité est-elle obligatoire ?;1;1;1;1.0;loi_2024-22_CIN.pdf
+Recherche simple;6;Je me suis mariée, comment changer les données de ma carte d'identité ?;1;1;1;1.0;CIN_modification_donnees.pdf
+Recherche simple;7;J'ai déménagé, dois-je changer ma carte d'identité ?;1;1;1;1.0;CIN_modification_donnees.pdf
+Recherche simple;8;Dans quel délai faut-il renouveler sa carte d'identité expirée ?;1;1;1;1.0;loi_2024-22_CIN.pdf
+Recherche simple;9;Combien de photos faut-il pour une demande de passeport ?;1;1;1;1.0;guide_orientation_citoyen.pdf
+Recherche simple;10;Quel est le prix d'un passeport pour un étudiant ?;1;1;1;1.0;guide_orientation_citoyen.pdf
+Recherche simple;11;Comment obtenir un passeport pour la première fois en Tunisie ?;2;1;1;0.5;passeport_premiere_fois_etranger.pdf
+Recherche simple;12;J'ai perdu mon passeport en Tunisie, quelles pièces dois-je fournir ?;non trouvé;0;0;0;passeport_renouvellement_etranger.pdf
+Recherche simple;13;J'habite en France et j'ai perdu mon passeport, que faire ?;non trouvé;0;0;0;guide_orientation_citoyen.pdf
+Recherche simple;14;Mon passeport est abîmé, que dois-je faire ?;2;1;1;0.5;guide_orientation_citoyen.pdf
+Recherche simple;15;Comment renouveler mon passeport quand je vis à l'étranger ?;1;1;1;1.0;passeport_renouvellement_etranger.pdf
+Recherche simple;16;Puis-je garder mon ancien passeport après le renouvellement ?;1;1;1;1.0;passeport_premiere_fois_renouvellement_tunisie.pdf
+Recherche simple;17;Où obtenir un extrait de naissance ?;1;1;1;1.0;extrait_naissance.pdf
+Recherche simple;18;Combien coûte un extrait de naissance ?;1;1;1;1.0;extrait_naissance.pdf
+Recherche simple;19;Où demander une attestation de résidence ?;1;1;1;1.0;attestation_residence.pdf
+Recherche simple;20;Combien coûte une attestation de résidence ?;1;1;1;1.0;attestation_residence.pdf
+Recherche simple;21;Où faire légaliser ma signature ?;1;1;1;1.0;legalisation_signature.pdf
+Recherche simple;22;Un enfant mineur peut-il voyager avec l'autorisation d'un seul parent ?;1;1;1;1.0;loi_2015-46_passeports_mineurs.pdf
+Recherche simple;23;Dans quel délai faut-il déclarer une naissance ?;1;1;1;1.0;loi_57-3_etat_civil.pdf
+Recherche simple;24;Dans quel délai faut-il déclarer un décès ?;1;1;1;1.0;loi_57-3_etat_civil.pdf
+Recherche simple;25;Comment corriger une erreur dans un acte de naissance ?;2;1;1;0.5;CIN_modification_donnees.pdf
+Recherche simple;26;Que devient la puce électronique du passeport en cas de perte ?;1;1;1;1.0;loi_2024-23_passeports.pdf
+Recherche simple;27;Quelles raisons peuvent empêcher la délivrance d'un passeport ?;1;1;1;1.0;loi_75-40_passeports.pdf
+Recherche simple;28;Combien de temps faut-il pour obtenir un duplicata de passeport quand on vit à l'étranger ?;1;1;1;1.0;passeport_perte_etranger.pdf
+Recherche simple;29;Combien de temps prend une légalisation de signature ?;1;1;1;1.0;legalisation_signature.pdf
+Recherche simple;30;Quelle case cocher sur le formulaire de carte d'identité en cas de perte ?;1;1;1;1.0;CIN_perte_vol_deterioration.pdf
+Recherche améliorée;1;J'ai perdu ma carte d'identité, que dois-je faire ?;1;1;1;1.0;CIN_perte_vol_deterioration.pdf
+Recherche améliorée;2;Combien coûte le renouvellement d'une carte d'identité en bon état ?;1;1;1;1.0;CIN_renouvellement.pdf
+Recherche améliorée;3;Combien coûte le renouvellement d'une carte d'identité détériorée ?;1;1;1;1.0;CIN_renouvellement.pdf
+Recherche améliorée;4;Quels documents faut-il pour obtenir la carte d'identité pour la première fois ?;5;0;1;0.2;attestation_residence.pdf
+Recherche améliorée;5;À partir de quel âge la carte d'identité est-elle obligatoire ?;1;1;1;1.0;CIN_premiere_fois.pdf
+Recherche améliorée;6;Je me suis mariée, comment changer les données de ma carte d'identité ?;1;1;1;1.0;CIN_modification_donnees.pdf
+Recherche améliorée;7;J'ai déménagé, dois-je changer ma carte d'identité ?;1;1;1;1.0;CIN_modification_donnees.pdf
+Recherche améliorée;8;Dans quel délai faut-il renouveler sa carte d'identité expirée ?;2;1;1;0.5;CIN_renouvellement.pdf
+Recherche améliorée;9;Combien de photos faut-il pour une demande de passeport ?;1;1;1;1.0;passeport_perte_etranger.pdf
+Recherche améliorée;10;Quel est le prix d'un passeport pour un étudiant ?;1;1;1;1.0;passeport_premiere_fois_renouvellement_tunisie.pdf
+Recherche améliorée;11;Comment obtenir un passeport pour la première fois en Tunisie ?;1;1;1;1.0;passeport_premiere_fois_renouvellement_tunisie.pdf
+Recherche améliorée;12;J'ai perdu mon passeport en Tunisie, quelles pièces dois-je fournir ?;3;1;1;0.3333333333333333;passeport_premiere_fois_renouvellement_tunisie.pdf
+Recherche améliorée;13;J'habite en France et j'ai perdu mon passeport, que faire ?;4;0;1;0.25;guide_orientation_citoyen.pdf
+Recherche améliorée;14;Mon passeport est abîmé, que dois-je faire ?;1;1;1;1.0;passeport_deterioration_tunisie.pdf
+Recherche améliorée;15;Comment renouveler mon passeport quand je vis à l'étranger ?;1;1;1;1.0;passeport_renouvellement_etranger.pdf
+Recherche améliorée;16;Puis-je garder mon ancien passeport après le renouvellement ?;1;1;1;1.0;passeport_premiere_fois_renouvellement_tunisie.pdf
+Recherche améliorée;17;Où obtenir un extrait de naissance ?;1;1;1;1.0;extrait_naissance.pdf
+Recherche améliorée;18;Combien coûte un extrait de naissance ?;1;1;1;1.0;extrait_naissance.pdf
+Recherche améliorée;19;Où demander une attestation de résidence ?;1;1;1;1.0;attestation_residence.pdf
+Recherche améliorée;20;Combien coûte une attestation de résidence ?;1;1;1;1.0;attestation_residence.pdf
+Recherche améliorée;21;Où faire légaliser ma signature ?;1;1;1;1.0;legalisation_signature.pdf
+Recherche améliorée;22;Un enfant mineur peut-il voyager avec l'autorisation d'un seul parent ?;1;1;1;1.0;loi_2015-46_passeports_mineurs.pdf
+Recherche améliorée;23;Dans quel délai faut-il déclarer une naissance ?;1;1;1;1.0;loi_57-3_etat_civil.pdf
+Recherche améliorée;24;Dans quel délai faut-il déclarer un décès ?;1;1;1;1.0;loi_57-3_etat_civil.pdf
+Recherche améliorée;25;Comment corriger une erreur dans un acte de naissance ?;3;1;1;0.3333333333333333;CIN_modification_donnees.pdf
+Recherche améliorée;26;Que devient la puce électronique du passeport en cas de perte ?;1;1;1;1.0;loi_2024-23_passeports.pdf
+Recherche améliorée;27;Quelles raisons peuvent empêcher la délivrance d'un passeport ?;2;1;1;0.5;passeport_perte_tunisie.pdf
+Recherche améliorée;28;Combien de temps faut-il pour obtenir un duplicata de passeport quand on vit à l'étranger ?;1;1;1;1.0;passeport_perte_etranger.pdf
+Recherche améliorée;29;Combien de temps prend une légalisation de signature ?;1;1;1;1.0;legalisation_signature.pdf
+Recherche améliorée;30;Quelle case cocher sur le formulaire de carte d'identité en cas de perte ?;1;1;1;1.0;CIN_perte_vol_deterioration.pdf

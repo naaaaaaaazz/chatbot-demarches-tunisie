@@ -1,0 +1,36 @@
+id,question,public,fichiers_attendus,reponse_attendue
+1,"J'ai perdu ma carte d'identité, que dois-je faire ?",,CIN_perte_vol_deterioration;loi_2024-22_CIN,"Déclarer la perte au poste de police ou de la garde nationale, puis déposer un dossier avec l'attestation de perte, 3 photos et un timbre de 25 dinars"
+2,Combien coûte le renouvellement d'une carte d'identité en bon état ?,,CIN_renouvellement,3 dinars
+3,Combien coûte le renouvellement d'une carte d'identité détériorée ?,,CIN_renouvellement,25 dinars
+4,Quels documents faut-il pour obtenir la carte d'identité pour la première fois ?,,CIN_premiere_fois,"Extrait de naissance de moins de 3 mois, attestation de nationalité, attestation de résidence, attestation de travail ou de scolarité, 3 photos, quittance du timbre fiscal"
+5,À partir de quel âge la carte d'identité est-elle obligatoire ?,,loi_2024-22_CIN;CIN_premiere_fois;guide_orientation_citoyen,15 ans (entre 12 et 15 ans à titre exceptionnel)
+6,"Je me suis mariée, comment changer les données de ma carte d'identité ?",,CIN_modification_donnees,"Extrait de naissance ou copie de l'acte de mariage, la carte à changer, 3 photos, quittance du timbre fiscal"
+7,"J'ai déménagé, dois-je changer ma carte d'identité ?",,CIN_modification_donnees;loi_2024-22_CIN,"Oui, modification de données avec une attestation de résidence"
+8,Dans quel délai faut-il renouveler sa carte d'identité expirée ?,,loi_2024-22_CIN;guide_orientation_citoyen,30 jours au maximum
+9,Combien de photos faut-il pour une demande de passeport ?,,passeport_premiere_fois_renouvellement_tunisie;passeport_perte_tunisie;passeport_deterioration_tunisie;passeport_premiere_fois_etranger;passeport_renouvellement_etranger;passeport_perte_etranger;passeport_deterioration_etranger;guide_orientation_citoyen,"4 photos, fond blanc, 3,5 x 4,5 cm"
+10,Quel est le prix d'un passeport pour un étudiant ?,,passeport_premiere_fois_renouvellement_tunisie;guide_orientation_citoyen,25 TND
+11,Comment obtenir un passeport pour la première fois en Tunisie ?,,passeport_premiere_fois_renouvellement_tunisie,"Formulaire, copie de la CIN, 4 photos, quittance du timbre fiscal, justificatif de scolarité pour les élèves et étudiants"
+12,"J'ai perdu mon passeport en Tunisie, quelles pièces dois-je fournir ?",,passeport_perte_tunisie,"Formulaire, copie de la CIN, 4 photos, attestation de déclaration de perte, quittance, document prouvant la nécessité du duplicata"
+13,"J'habite en France et j'ai perdu mon passeport, que faire ?",etranger,passeport_perte_etranger,"Duplicata : attestation de perte, justificatif de résidence à l'étranger, 150 TND en devises"
+14,"Mon passeport est abîmé, que dois-je faire ?",,passeport_deterioration_tunisie;passeport_deterioration_etranger,"Changement du passeport : le passeport à changer, 150 TND s'il est vétuste ou altéré"
+15,Comment renouveler mon passeport quand je vis à l'étranger ?,etranger,passeport_renouvellement_etranger,"Ancien passeport, justificatif de résidence à l'étranger, 80 TND ou 25 TND"
+16,Puis-je garder mon ancien passeport après le renouvellement ?,,passeport_premiere_fois_renouvellement_tunisie;passeport_renouvellement_etranger;loi_75-40_passeports,"Oui, sur demande écrite sur papier ordinaire"
+17,Où obtenir un extrait de naissance ?,,extrait_naissance;guide_orientation_citoyen,Municipalité (bureau d'état civil) ou en ligne sur e-Houwiya
+18,Combien coûte un extrait de naissance ?,,extrait_naissance;guide_orientation_citoyen,"0,500 TND"
+19,Où demander une attestation de résidence ?,,attestation_residence;guide_orientation_citoyen,Poste de police ou de la garde nationale
+20,Combien coûte une attestation de résidence ?,,attestation_residence;guide_orientation_citoyen,Timbre fiscal de 5 dinars
+21,Où faire légaliser ma signature ?,,legalisation_signature;guide_orientation_citoyen,Bureau d'état civil de l'arrondissement municipal
+22,Un enfant mineur peut-il voyager avec l'autorisation d'un seul parent ?,,loi_2015-46_passeports_mineurs;guide_orientation_citoyen,"Oui : autorisation de l'un des deux parents, du tuteur ou de la personne à qui la garde a été confiée"
+23,Dans quel délai faut-il déclarer une naissance ?,,loi_57-3_etat_civil,10 jours (15 jours hors commune ou à l'étranger)
+24,Dans quel délai faut-il déclarer un décès ?,,loi_57-3_etat_civil,3 jours
+25,Comment corriger une erreur dans un acte de naissance ?,,loi_57-3_etat_civil,Rectification ordonnée par le président du tribunal de première instance
+26,Que devient la puce électronique du passeport en cas de perte ?,,loi_2024-23_passeports,Elle est désactivée
+27,Quelles raisons peuvent empêcher la délivrance d'un passeport ?,,loi_75-40_passeports;passeport_premiere_fois_renouvellement_tunisie,"Mineur sans autorisation, obligations militaires, poursuites judiciaires, ordre public"
+28,Combien de temps faut-il pour obtenir un duplicata de passeport quand on vit à l'étranger ?,etranger,passeport_perte_etranger,15 jours
+29,Combien de temps prend une légalisation de signature ?,,legalisation_signature,"Dans l'heure, sans frais (0 TND)"
+30,Quelle case cocher sur le formulaire de carte d'identité en cas de perte ?,,CIN_perte_vol_deterioration,La case n° 2 « perte » (dhayaa)
+31,Comment obtenir un permis de conduire ?,,,Hors sujet : le chatbot doit dire qu'il ne trouve pas l'information
+32,Quel temps fait-il à Tunis aujourd'hui ?,,,Hors sujet : le chatbot doit dire qu'il ne trouve pas l'information
+33,Comment créer une entreprise en Tunisie ?,,,Hors sujet : le chatbot doit dire qu'il ne trouve pas l'information
+34,Comment ouvrir un compte bancaire ?,,,Hors sujet : le chatbot doit dire qu'il ne trouve pas l'information
+35,Quel est le prix d'un billet de train entre Tunis et Sousse ?,,,Hors sujet : le chatbot doit dire qu'il ne trouve pas l'information

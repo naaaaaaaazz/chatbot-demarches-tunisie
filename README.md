@@ -177,5 +177,4 @@ Un modèle plus grand (`qwen2.5:7b`) ou un GPU, une recherche hybride (BM25 + em
 - ⚠️ Cet assistant aide à s'orienter, mais il ne remplace pas l'administration. Vérifiez toujours auprès du service concerné.
 
 ## 🛠️ Technologies
-Python · PyMuPDF · LangChain Text Splitters · Sentence-Transformers (`intfloat/multilingual-e5-base`) · ChromaDB · Ollama (`qwen2.5:3b`) · Streamlit#   c h a t b o t - d e m a r c h e s - t u n i s i e  
- 
+Python · PyMuPDF · LangChain Text Splitters · Sentence-Transformers (`intfloat/multilingual-e5-base`) · ChromaDB · Ollama (`qwen2.5:3b`) · Streamlit

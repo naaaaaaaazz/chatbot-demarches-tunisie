@@ -1,0 +1,13 @@
+# Environnement Python (trop lourd, chacun le recrée avec requirements.txt)
+.venv/
+__pycache__/
+
+# Fichiers générés (recréés par embeddings.py et indexation.py)
+vector_db/
+data/processed/
+
+# Secrets (au cas où)
+.env
+
+# Fichiers personnels
+notes_tests.txt
