@@ -80,7 +80,7 @@ documents_admin_tunisie/
 
 ```powershell
 # 1. Récupérer le projet
-git clone [lien de votre dépôt GitHub]
+git clone https://github.com/naaaaaaaazz/chatbot-demarches-tunisie.git
 cd documents_admin_tunisie
 
 # 2. Créer et activer l'environnement virtuel
