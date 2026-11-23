@@ -1,8 +1,6 @@
 """
-Étape 6 : génération de la réponse avec un LLM, à partir des extraits trouvés dans ChromaDB.
-
-LLM principal : API Groq (rapide, modèle hébergé sur des serveurs).
-Si l'API ne répond pas (pas d'Internet, limite atteinte...), on se replie sur Ollama (local).
+Étape 6 : génération de la réponse avec un LLM local (Ollama),
+à partir des extraits trouvés dans ChromaDB.
 
 Small-to-big : on cherche avec de petits chunks, mais pour la meilleure fiche
 de procédure, on envoie au LLM sa page entière (la liste des papiers n'est plus coupée).
@@ -30,8 +28,14 @@ Règles :
 1. Réponds UNIQUEMENT à partir des extraits fournis.
 2. Si la réponse n'est pas dans les extraits, réponds exactement :
    "Je ne trouve pas cette information dans les documents."
-3. Après chaque information, cite la source sous la forme [nom_du_fichier, p. X].
-   Format attendu : - <information> [nom_du_fichier.pdf, p. X]
+3. Présente la réponse en Markdown, ainsi :
+   - une phrase d'introduction courte ;
+   - un titre « ## » avec le nom de la démarche ;
+   - une rubrique « ### » par partie demandée (par exemple : Documents à fournir,
+     Étapes, Où déposer, Coût, Délai). N'écris une rubrique que si elle est demandée
+     (règle 8) ET présente dans les extraits ;
+   - sous chaque rubrique, une liste où chaque point finit par sa source :
+     - <information> [nom_du_fichier.pdf, p. X]
 4. Si une fiche de procédure répond à la question, utilise-la EN PRIORITÉ.
    N'utilise les lois que si la question porte sur la loi ou si aucune fiche ne répond.
    Un extrait sur la carte d'identité ne sert pas pour une question sur le passeport.
@@ -153,7 +157,6 @@ def repondre(question, collection, modele, k=K, public=None):
 if __name__ == "__main__":
     collection = ouvrir_collection()
     modele = charger_modele()
-    print(f"LLM utilisé : {FOURNISSEUR} ({MODELE_API if FOURNISSEUR == 'groq' else NOM_LLM})")
 
     questions = [
         ("J'ai perdu ma carte d'identité, que dois-je faire ?", None),

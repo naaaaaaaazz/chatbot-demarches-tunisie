@@ -3,7 +3,10 @@
 Lancer depuis la racine du projet avec : streamlit run src/app.py
 """
 import base64
+import html
+import re
 from pathlib import Path
+from urllib.parse import urlparse
 
 import pymupdf
 import streamlit as st
@@ -39,15 +42,27 @@ CARTES = [
 CSS = """
 <style>
 /* Fond : bandeau bleu marine en haut, gris clair en dessous */
-.stApp { background: linear-gradient(180deg, #0b2447 0px, #19376d 230px, #f4f6fb 230px); }
+.stApp { background: linear-gradient(180deg, #0b2447 0px, #19376d 330px, #f4f6fb 330px); }
 header[data-testid="stHeader"] { background: transparent; }
-.block-container { max-width: 1100px; padding-top: 2rem; }
+.stAppDeployButton { display: none; }
+.block-container { max-width: 1100px; padding-top: 1.5rem; }
 
 /* En-tête */
-.entete { text-align: center; color: #ffffff; padding: 10px 0 28px; }
-.entete h1 { color: #ffffff; font-size: 2.3rem; margin: 0; }
+.entete { text-align: center; color: #ffffff; padding: 6px 0 34px; }
+.entete .logo { width: 74px; height: 74px; margin: 0 auto 12px; border-radius: 50%;
+    background: #ffffff; display: flex; align-items: center; justify-content: center;
+    font-size: 2.3rem; box-shadow: 0 0 0 6px rgba(255, 255, 255, .15); }
+.entete .etiquette { display: inline-block; padding: 3px 14px; border-radius: 999px;
+    background: rgba(255, 255, 255, .12); border: 1px solid rgba(255, 255, 255, .25);
+    color: #dbe3f3; font-size: .75rem; font-weight: 600; letter-spacing: .12em; }
+.entete h1 { font-family: Georgia, serif; color: #ffffff; font-size: 2.5rem;
+    margin: 10px 0 0; padding: 0; }
 .entete p { color: #dbe3f3; font-size: 1.05rem; margin: 6px 0 0; }
-.entete .ligne { width: 90px; height: 5px; background: #c8102e; border-radius: 3px; margin: 14px auto 0; }
+.entete .ligne { width: 90px; height: 5px; background: #c8102e; border-radius: 3px; margin: 16px auto 18px; }
+.entete .pastilles { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.entete .pastilles span { background: #ffffff; color: #0b2447; border-radius: 999px;
+    padding: 6px 14px; font-size: .85rem; font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .15); }
 
 /* Cartes de la page d'accueil */
 .carte { background: #ffffff; border-radius: 14px; overflow: hidden;
@@ -59,6 +74,64 @@ header[data-testid="stHeader"] { background: transparent; }
 .carte .contenu { border-top: 4px solid #c8102e; padding: 12px 16px 14px; min-height: 100px; }
 .carte h3 { color: #0b2447; font-size: 1.15rem; margin: 0; padding: 0; }
 .carte p { color: #5b6479; font-size: .9rem; margin: 4px 0 0; }
+
+/* Question de l'utilisateur : bulle bleue à droite */
+[data-testid="stChatMessage"]:has(.bulle) { background: transparent !important;
+    box-shadow: none !important; flex-direction: row-reverse; }
+.bulle { margin-left: auto; width: fit-content; max-width: 75%; background: #1f3a93; color: #ffffff;
+    padding: 10px 18px; border-radius: 18px 18px 4px 18px; box-shadow: 0 4px 12px rgba(11, 36, 71, .25); }
+
+/* Réponses du chatbot : titre de la démarche, rubriques, cases cochées */
+[data-testid="stChatMessage"] h2 { font-family: Georgia, serif; color: #0b2447; font-size: 1.45rem;
+    background: #ffffff; border-left: 6px solid #c8102e; border-radius: 10px;
+    padding: 14px 18px; margin: 14px 0 6px; box-shadow: 0 4px 14px rgba(11, 36, 71, .10); }
+[data-testid="stChatMessage"] h3 { color: #19376d; font-size: .95rem; text-transform: uppercase;
+    letter-spacing: .05em; margin: 20px 0 6px; padding-bottom: 6px; border-bottom: 2px solid #e3e8f2; }
+[data-testid="stChatMessage"] ul { list-style: none; padding-left: 0; }
+[data-testid="stChatMessage"] li { position: relative; margin: 0; padding: 9px 0 9px 34px;
+    border-bottom: 1px dashed #e3e8f2; }
+[data-testid="stChatMessage"] li::before { content: "✓"; position: absolute; left: 4px; top: 9px;
+    width: 20px; height: 20px; border: 2px solid #19376d; border-radius: 5px; color: #19376d;
+    font-weight: 700; font-size: .8rem; display: flex; align-items: center; justify-content: center; }
+
+/* Cartes des formulaires */
+.titre-rubrique { color: #19376d; font-size: .95rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .05em; margin: 18px 0 4px; }
+[class*="st-key-formulaire_"] { background: #f7f9fc; border-radius: 12px; }
+.icone-pdf { width: 42px; height: 42px; border-radius: 10px; background: #e8eefb;
+    display: flex; align-items: center; justify-content: center; font-size: 1.4rem; }
+.nom-formulaire { color: #0b2447; font-weight: 600; font-size: 1.02rem; }
+.sous-titre { color: #6b7489; font-size: .85rem; }
+
+/* Encadré des sites officiels */
+.sites { background: #eef3fb; border: 1px solid #c5d3ef; border-radius: 12px;
+    padding: 12px 18px; margin: 14px 0; }
+.sites .titre-sites { color: #19376d; font-size: .9rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .05em; margin: 0 0 6px; }
+.sites a { display: block; color: #1f3a93; text-decoration: none; padding: 3px 0;
+    border-bottom: 1px dotted #9fb3dc; width: fit-content; margin-bottom: 4px; }
+.sites a:hover { color: #c8102e; }
+
+/* Réponses dans une carte blanche, zone de saisie alignée sur le contenu */
+[data-testid="stChatMessage"] { background: #ffffff; border-radius: 14px;
+    box-shadow: 0 6px 20px rgba(11, 36, 71, .10); padding: 18px 22px; }
+[data-testid="stChatMessage"] p, [data-testid="stChatMessage"] li { font-size: 1rem; line-height: 1.6; }
+[data-testid="stBottomBlockContainer"] { max-width: 1100px; margin: 0 auto; }
+[data-testid="stBottom"] > div { background: transparent; }
+
+/* Numéro de source dans le texte (survoler = voir le fichier) */
+.ref { display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px;
+    margin-left: 4px; border-radius: 50%; background: #19376d; color: #ffffff;
+    font-size: .68rem; font-weight: 700; vertical-align: super; cursor: help; }
+.refs { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; padding-top: 10px;
+    border-top: 1px solid #e3e8f2; }
+.refs .source { margin-left: 0; }
+.refs .source b { background: #19376d; color: #ffffff; border-radius: 50%; padding: 0 5px; margin-right: 3px; }
+
+/* Étiquette de source après chaque information */
+.source { display: inline-block; margin-left: 6px; padding: 1px 9px; border-radius: 999px;
+    background: #e8eefb; color: #19376d; border: 1px solid #c5d3ef;
+    font-size: .75rem; font-weight: 600; white-space: nowrap; vertical-align: middle; }
 </style>
 """
 
@@ -70,7 +143,7 @@ def charger_ressources():
 
 
 def css_photo_de_fond():
-    """Si images/fond.jpg existe : photo en fond de page, assombrie par un voile bleu."""
+    """Si images/fond.jpg existe : photo sur tout le fond de la page, assombrie par un voile bleu."""
     chemin = DOSSIER_IMAGES / "fond.jpg"
     if not chemin.exists():
         return ""
@@ -79,9 +152,6 @@ def css_photo_de_fond():
 .stApp {{ background:
     linear-gradient(rgba(11, 36, 71, .82), rgba(11, 36, 71, .62) 40%, rgba(11, 36, 71, .88)),
     url("data:image/jpeg;base64,{code}") center / cover fixed; }}
-[data-testid="stChatMessage"] {{ background: #ffffff; border-radius: 12px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, .18); }}
-[data-testid="stBottom"] > div {{ background: transparent; }}
 [data-testid="stSpinner"] p {{ color: #ffffff; }}
 </style>"""
 
@@ -104,6 +174,12 @@ def afficher_carte(titre, description, image):
         <div class="visuel">{visuel}</div>
         <div class="contenu"><h3>{titre}</h3><p>{description}</p></div>
     </div>""", unsafe_allow_html=True)
+
+
+@st.cache_resource
+def memoire_des_reponses():
+    """Mémoire partagée : question déjà posée -> (réponse, sources). Vidée quand on relance Streamlit."""
+    return {}
 
 
 @st.cache_data
@@ -130,24 +206,124 @@ def apercu_pdf(titre, chemin, cle, page_citee=None):
                            file_name=chemin.name, mime="application/pdf", key=cle)
 
 
+def basculer(cle):
+    """Bouton « Ouvrir / Fermer » : inverse l'état ouvert/fermé d'un formulaire."""
+    st.session_state[cle] = not st.session_state.get(cle, False)
+
+
+def carte_formulaire(nom, chemin, cle):
+    """Une carte par formulaire : icône, nom, bouton Télécharger et bouton Ouvrir."""
+    chemin = Path(chemin)
+    pages = pages_en_images(str(chemin))
+    cle_ouvert = f"ouvert_{cle}"
+    ouvert = st.session_state.get(cle_ouvert, False)
+    with st.container(border=True, key=f"formulaire_{cle}"):
+        icone, texte, telecharger, ouvrir = st.columns([0.6, 5, 1.6, 1.6],
+                                                        vertical_alignment="center")
+        icone.markdown('<div class="icone-pdf">📄</div>', unsafe_allow_html=True)
+        texte.markdown(f'<div class="nom-formulaire">{html.escape(nom)}</div>'
+                       f'<div class="sous-titre">Formulaire (PDF) · {len(pages)} page(s)</div>',
+                       unsafe_allow_html=True)
+        telecharger.download_button("Télécharger", data=chemin.read_bytes(),
+                                    file_name=chemin.name, mime="application/pdf",
+                                    key=f"tel_{cle}", type="primary", width="stretch")
+        ouvrir.button("Fermer" if ouvert else "Ouvrir", key=f"btn_{cle}",
+                      on_click=basculer, args=(cle_ouvert,), width="stretch")
+        if ouvert:                                 # aperçu des pages dans la page
+            for numero, image in enumerate(pages, start=1):
+                st.image(image, caption=f"Page {numero}")
+
+
+@st.cache_data
+def liens_du_pdf(chemin):
+    """Trouve les adresses web écrites dans un PDF (liens cliquables + adresses dans le texte)."""
+    liens = []
+    with pymupdf.open(chemin) as document:
+        for page in document:
+            adresses = [lien["uri"] for lien in page.get_links() if lien.get("uri")]
+            adresses += re.findall(r"(?:https?://|www\.)[^\s<>\"'()\[\]]+", page.get_text())
+            for adresse in adresses:
+                adresse = adresse.rstrip(".,;:")
+                if not adresse.startswith("http"):
+                    adresse = "https://" + adresse
+                if adresse not in liens:
+                    liens.append(adresse)
+    return liens
+
+
+def pdf_utilises(sources, reponse):
+    """Les PDF cités dans la réponse ; si aucun n'est cité, le meilleur PDF trouvé."""
+    cites = [r["source"] for r in sources if r["source"] in reponse]
+    if not cites and sources:
+        cites = [sources[0]["source"]]
+    return list(dict.fromkeys(cites))                 # enlève les doublons, garde l'ordre
+
+
+def encadre_sites(sources, reponse):
+    """Encadré « Sites officiels » : les liens écrits dans les PDF utilisés pour la réponse."""
+    if "je ne trouve pas" in reponse.lower():
+        return
+    documents = chemins_des_documents()
+    liens = []
+    for nom in pdf_utilises(sources, reponse):
+        if nom in documents:
+            for url in liens_du_pdf(documents[nom]):
+                if url not in liens:
+                    liens.append(url)
+    if liens:
+        html_liens = "".join(
+            f'<a href="{html.escape(url)}" target="_blank">'
+            f'{html.escape(urlparse(url).netloc.removeprefix("www."))} ↗</a>'
+            for url in liens[:4])
+        st.markdown('<div class="sites"><p class="titre-sites">🌐 Sites officiels (sources des documents)</p>'
+                    + html_liens + "</div>", unsafe_allow_html=True)
+
+
 def mettre_en_forme(texte):
-    """Transforme les puces « • » en liste Markdown (un point par ligne)."""
-    return texte.replace("•", "\n- ")
+    """Puces « • » -> liste Markdown. Citations [fichier.pdf, p. X] -> petits numéros ①
+    dans le texte, et la liste des références (numéro -> fichier, page) à la fin."""
+    texte = texte.replace("<", "&lt;")             # sécurité : pas de HTML venant du LLM
+    texte = texte.replace("•", "\n- ")
+    numeros = {}                                   # (fichier, page) -> numéro
+
+    def remplacer(trouve):
+        refs = re.findall(r"([\w\-. ]+?\.pdf)\s*,\s*p\.?\s*(\d+)", trouve.group(1))
+        if not refs:                               # ce n'est pas une citation : on ne touche à rien
+            return trouve.group(0)
+        sortie = ""
+        for nom, page in refs:
+            cle = (nom.strip(), page)
+            numeros.setdefault(cle, len(numeros) + 1)
+            sortie += f'<span class="ref" title="{cle[0]} · p. {page}">{numeros[cle]}</span>'
+        return sortie
+
+    texte = re.sub(r"\[([^\[\]]*\.pdf[^\[\]]*)\]", remplacer, texte)
+    if numeros:
+        texte += '\n\n<div class="refs">' + "".join(
+            f'<span class="source"><b>{n}</b> 📄 {nom} · p. {page}</span>'
+            for (nom, page), n in numeros.items()) + "</div>"
+    return texte
 
 
 def afficher_message(i, message):
     """Affiche un message du chat (question ou réponse avec formulaires et sources)."""
     avatar = "🧑" if message["role"] == "user" else "🏛️"
     with st.chat_message(message["role"], avatar=avatar):
-        st.markdown(mettre_en_forme(message["contenu"]))
+        if message["role"] == "user":
+            st.markdown(f'<div class="bulle">{html.escape(message["contenu"])}</div>',
+                        unsafe_allow_html=True)
+        else:
+            st.markdown(mettre_en_forme(message["contenu"]), unsafe_allow_html=True)
         if message["role"] == "assistant":
             if message["formulaires"]:
-                st.info("📝 Formulaire officiel pour cette démarche : ouvrez-le pour le voir, puis téléchargez-le pour l’imprimer et le remplir.")
+                st.markdown('<p class="titre-rubrique">📝 Formulaires à remplir</p>',
+                            unsafe_allow_html=True)
             for fichier, nom in message["formulaires"]:
                 chemin = DOSSIER_FORMULAIRES / fichier
                 if chemin.exists():
-                    apercu_pdf(f"📄 Voir le formulaire : {nom}", chemin, f"{i}_form_{fichier}")
+                    carte_formulaire(nom, chemin, f"{i}_form_{fichier}")
 
+            encadre_sites(message["sources"], message["contenu"])
             st.markdown("**📚 Sources consultées** (cliquez pour ouvrir le document)")
             documents = chemins_des_documents()
             deja_vus = set()
@@ -176,10 +352,17 @@ st.sidebar.caption("Les réponses viennent uniquement des documents du projet. "
 
 # ----- En-tête -----
 st.markdown("""<div class="entete">
-    <h1>🏛️ Assistant des démarches administratives</h1>
+    <div class="logo">🏛️</div>
+    <span class="etiquette">ASSISTANT IA · RAG</span>
+    <h1>Assistant des démarches administratives</h1>
     <p>Carte d'identité, passeport, services municipaux : posez votre question,
        la réponse cite les documents officiels.</p>
     <div class="ligne"></div>
+    <div class="pastilles">
+        <span>📚 Réponses sourcées</span>
+        <span>⚡ En quelques secondes</span>
+        <span>🔒 Documents du projet uniquement</span>
+    </div>
 </div>""", unsafe_allow_html=True)
 
 with st.spinner("Chargement du modèle et des documents (première fois : environ 30 s)..."):
@@ -208,10 +391,16 @@ if question:
     st.session_state.historique.append(message_user)
     afficher_message(len(st.session_state.historique) - 1, message_user)
 
+    memoire = memoire_des_reponses()
+    cle = (question.strip().lower(), public)
     with st.chat_message("assistant", avatar="🏛️"):
-        with st.spinner("Recherche dans les documents..."):
-            resultats, contexte = preparer(question, collection, modele, public=public)
-        reponse = st.write_stream(generer_reponse_flux(question, contexte))
+        if cle in memoire:                       # déjà posée : réponse immédiate
+            reponse, resultats = memoire[cle]
+        else:                                    # nouvelle question : RAG complet
+            with st.spinner("Recherche dans les documents..."):
+                resultats, contexte = preparer(question, collection, modele, public=public)
+            reponse = st.write_stream(generer_reponse_flux(question, contexte))
+            memoire[cle] = (reponse, resultats)
     formulaires = trouver_formulaires(reponse, resultats, correspondances)
 
     message_assistant = {"role": "assistant", "contenu": reponse,
