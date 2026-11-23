@@ -1,20 +1,29 @@
 """
-Étape 6 : génération de la réponse avec un LLM local (Ollama),
-à partir des extraits trouvés dans ChromaDB.
+Étape 6 : génération de la réponse avec un LLM, à partir des extraits trouvés dans ChromaDB.
+
+LLM principal : API Groq (rapide, modèle hébergé sur des serveurs).
+Si l'API ne répond pas (pas d'Internet, limite atteinte...), on se replie sur Ollama (local).
 
 Small-to-big : on cherche avec de petits chunks, mais pour la meilleure fiche
 de procédure, on envoie au LLM sa page entière (la liste des papiers n'est plus coupée).
 """
+import os
 import time
 
 import chromadb
 import ollama
+from dotenv import load_dotenv
 
 from embeddings import charger_modele
 from indexation import rechercher, DOSSIER_BASE, NOM_COLLECTION
 
 NOM_LLM = "qwen2.5:3b"
 K = 5
+OPTIONS_LLM = {"temperature": 0.1, "num_predict": 400}
+
+load_dotenv()  # lit le fichier .env (la clé API n'est jamais écrite dans le code)
+FOURNISSEUR = os.getenv("LLM_FOURNISSEUR", "groq")             # "groq" (API) ou "ollama" (local)
+MODELE_API = os.getenv("GROQ_MODELE", "openai/gpt-oss-120b")
 
 CONSIGNES = """Tu es un assistant pour les démarches administratives en Tunisie.
 Règles :
@@ -68,17 +77,65 @@ def construire_contexte(resultats, collection):
     return "\n\n".join(blocs)
 
 
-def generer_reponse(question, contexte):
-    """Envoie les règles, les extraits et la question au LLM."""
-    messages = [
+def construire_messages(question, contexte):
+    """Les deux messages envoyés au LLM : les règles, puis les extraits et la question."""
+    return [
         {"role": "system", "content": CONSIGNES},
         {"role": "user", "content": f"Extraits :\n{contexte}\n\nQuestion : {question}\n\n"
                                     "Réponds en citant la source [nom_du_fichier, p. X] après chaque information."},
     ]
+
+
+def options_api():
+    """Réglages de l'API. Les modèles « gpt-oss » réfléchissent avant de répondre :
+    on limite cette réflexion (reasoning_effort) et on leur laisse plus de tokens."""
+    if MODELE_API.startswith("openai/gpt-oss"):
+        return {"temperature": 0.1, "max_tokens": 1500, "reasoning_effort": "low"}
+    return {"temperature": 0.1, "max_tokens": 400}
+
+
+def client_api():
+    """Le client de l'API Groq, avec la clé lue dans .env."""
+    from groq import Groq
+    return Groq(api_key=os.environ["GROQ_API_KEY"])
+
+
+def generer_reponse(question, contexte):
+    """Envoie le prompt au LLM et attend la réponse complète (API, sinon Ollama)."""
+    messages = construire_messages(question, contexte)
+    if FOURNISSEUR == "groq":
+        try:
+            reponse = client_api().chat.completions.create(
+                model=MODELE_API, messages=messages, **options_api())
+            return reponse.choices[0].message.content
+        except Exception as erreur:
+            print(f"API indisponible ({erreur}) : repli sur Ollama")
     reponse = ollama.chat(model=NOM_LLM, messages=messages,
-                          options={"temperature": 0.1, "num_predict": 400},
-                          keep_alive="30m")
+                          options=OPTIONS_LLM, keep_alive="30m")
     return reponse["message"]["content"]
+
+
+def generer_reponse_flux(question, contexte):
+    """Comme generer_reponse, mais renvoie la réponse morceau par morceau (streaming)."""
+    messages = construire_messages(question, contexte)
+    if FOURNISSEUR == "groq":
+        try:
+            flux = client_api().chat.completions.create(
+                model=MODELE_API, messages=messages, stream=True, **options_api())
+            for morceau in flux:
+                yield morceau.choices[0].delta.content or ""
+            return
+        except Exception as erreur:
+            print(f"API indisponible ({erreur}) : repli sur Ollama")
+    for morceau in ollama.chat(model=NOM_LLM, messages=messages,
+                               options=OPTIONS_LLM, keep_alive="30m", stream=True):
+        yield morceau["message"]["content"]
+
+
+def preparer(question, collection, modele, k=K, public=None):
+    """Partie « R » et « A » du RAG : recherche puis contexte (sans le LLM)."""
+    resultats = rechercher(collection, modele, question, k=k, public=public)
+    return resultats, construire_contexte(resultats, collection)
 
 
 def repondre(question, collection, modele, k=K, public=None):
@@ -96,6 +153,7 @@ def repondre(question, collection, modele, k=K, public=None):
 if __name__ == "__main__":
     collection = ouvrir_collection()
     modele = charger_modele()
+    print(f"LLM utilisé : {FOURNISSEUR} ({MODELE_API if FOURNISSEUR == 'groq' else NOM_LLM})")
 
     questions = [
         ("J'ai perdu ma carte d'identité, que dois-je faire ?", None),

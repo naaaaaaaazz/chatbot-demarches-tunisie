@@ -5,16 +5,19 @@ Lancer depuis la racine du projet avec : streamlit run src/app.py
 import base64
 from pathlib import Path
 
+import pymupdf
 import streamlit as st
 
 from embeddings import charger_modele
-from generation import ouvrir_collection, repondre
+from generation import ouvrir_collection, preparer, generer_reponse_flux
 from choix_formulaire import charger_correspondances, trouver_formulaires, DOSSIER_FORMULAIRES
 
 st.set_page_config(page_title="Assistant démarches administratives",
                    page_icon="🏛️", layout="wide")
 
-DOSSIER_IMAGES = Path(__file__).resolve().parent.parent / "images"
+DOSSIER_PROJET = Path(__file__).resolve().parent.parent
+DOSSIER_IMAGES = DOSSIER_PROJET / "images"
+DOSSIER_DATA = DOSSIER_PROJET / "data"
 
 PUBLICS = {"Je ne sais pas": None,
            "En Tunisie": "tunisie",
@@ -103,6 +106,30 @@ def afficher_carte(titre, description, image):
     </div>""", unsafe_allow_html=True)
 
 
+@st.cache_data
+def chemins_des_documents():
+    """Associe chaque nom de PDF du corpus à son chemin (ex. CIN_renouvellement.pdf -> data/...)."""
+    return {chemin.name: str(chemin) for chemin in DOSSIER_DATA.rglob("*.pdf")}
+
+
+@st.cache_data
+def pages_en_images(chemin):
+    """Transforme chaque page d'un PDF en image PNG (une seule fois grâce au cache)."""
+    with pymupdf.open(chemin) as document:
+        return [page.get_pixmap(dpi=100).tobytes("png") for page in document]
+
+
+def apercu_pdf(titre, chemin, cle, page_citee=None):
+    """Un bloc dépliable : voir le PDF dans la page, puis le télécharger si on veut."""
+    chemin = Path(chemin)
+    with st.expander(titre):
+        for numero, image in enumerate(pages_en_images(str(chemin)), start=1):
+            legende = f"Page {numero}" + (" — page citée" if numero == page_citee else "")
+            st.image(image, caption=legende)
+        st.download_button("⬇️ Télécharger le PDF", data=chemin.read_bytes(),
+                           file_name=chemin.name, mime="application/pdf", key=cle)
+
+
 def mettre_en_forme(texte):
     """Transforme les puces « • » en liste Markdown (un point par ligne)."""
     return texte.replace("•", "\n- ")
@@ -115,16 +142,21 @@ def afficher_message(i, message):
         st.markdown(mettre_en_forme(message["contenu"]))
         if message["role"] == "assistant":
             if message["formulaires"]:
-                st.info("📝 Formulaire à télécharger, imprimer et remplir pour cette démarche :")
+                st.info("📝 Formulaire officiel pour cette démarche : ouvrez-le pour le voir, puis téléchargez-le pour l’imprimer et le remplir.")
             for fichier, nom in message["formulaires"]:
                 chemin = DOSSIER_FORMULAIRES / fichier
                 if chemin.exists():
-                    st.download_button(f"📄 {nom}", data=chemin.read_bytes(),
-                                       file_name=fichier, mime="application/pdf",
-                                       key=f"{i}_{fichier}")
-            with st.expander("Sources consultées"):
-                for r in message["sources"]:
-                    st.write(f"- {r['source']} (page {r['page']}) — score {r['score']:.3f}")
+                    apercu_pdf(f"📄 Voir le formulaire : {nom}", chemin, f"{i}_form_{fichier}")
+
+            st.markdown("**📚 Sources consultées** (cliquez pour ouvrir le document)")
+            documents = chemins_des_documents()
+            deja_vus = set()
+            for r in message["sources"]:
+                if r["source"] in deja_vus or r["source"] not in documents:
+                    continue
+                deja_vus.add(r["source"])
+                apercu_pdf(f"{r['source']} — page {r['page']} (score {r['score']:.3f})",
+                           documents[r["source"]], f"{i}_src_{r['source']}", page_citee=r["page"])
 
 
 st.markdown(CSS, unsafe_allow_html=True)
@@ -176,9 +208,11 @@ if question:
     st.session_state.historique.append(message_user)
     afficher_message(len(st.session_state.historique) - 1, message_user)
 
-    with st.spinner("Recherche dans les documents..."):
-        reponse, resultats = repondre(question, collection, modele, public=public)
-        formulaires = trouver_formulaires(reponse, resultats, correspondances)
+    with st.chat_message("assistant", avatar="🏛️"):
+        with st.spinner("Recherche dans les documents..."):
+            resultats, contexte = preparer(question, collection, modele, public=public)
+        reponse = st.write_stream(generer_reponse_flux(question, contexte))
+    formulaires = trouver_formulaires(reponse, resultats, correspondances)
 
     message_assistant = {"role": "assistant", "contenu": reponse,
                          "sources": resultats, "formulaires": formulaires}
