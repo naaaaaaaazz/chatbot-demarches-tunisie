@@ -1,97 +1,289 @@
 id;question;reponse_attendue;reponse_chatbot;sources;formulaires;temps_s;exactitude;fidelite;commentaire
-1;"J'ai perdu ma carte d'identité, que dois-je faire ?";"Déclarer la perte au poste de police ou de la garde na
-tionale, puis déposer un dossier avec l'attestation de perte, 3 photos et un timbre de 25 dinars";"- Vous devez immédiatement déclarer la perte au poste de police ou à la garde nationale du lieu de résidence ou du lieu de la perte. [CIN_perte_vol_deterioration.pdf, p. 1]
-- Pour obtenir l'attestation de déclaration de perte, vous devez présenter au poste de police ou à la garde nationale, déclarer l'objet perdu et le lieu de la perte, avec un timbre fiscal de 5 dinars. [CIN_perte_vol_deterioration.pdf, p. 1]
-- Vous devez fournir les pièces suivantes pour la nouvelle carte : remplir l'imprimé administratif et le signer, l'attestation de déclaration de perte, 3 photos d'identité de format 3/4 cm, prises de face, sur fond blanc ou clair, à l'échelle 1/10, montrant le visage et les yeux, et la quittance de paiement délivrée par la recette des finances, d'une valeur de 25 dinars. [CIN_perte_vol_deterioration.pdf, p. 1]
-- Vous devez remplir le formulaire officiel de demande de carte d'identité nationale (ministère de l'Intérieur), en arabe, cocher la case n° 2 « perte » (en arabe : dhayaa). [CIN_perte_vol_deterioration.pdf, p. 1]";"CIN_perte_vol_deterioration.pdf p.1 | CIN_modification_donnees.pdf p.1 | CIN_perte_vol_deterioration.pdf p.1 | loi_2024-22_CIN.pdf
- p.2 | CIN_premiere_fois.pdf p.1";"formu
-laire_CIN.pdf";132.3;2;2;"Complète : déclaration, pièces, case n° 2 du formulaire"
-2;Combien coûte le renouvellement d'une carte d'identité en bon état ?;3 dinars;"- Le renouvellement d'une carte d'identité en bon état coûte 3 dinars [CIN_renouvellement.pdf, p. 1]";CIN_renouvellement.pdf p.1 | CIN_renouvellement.pdf p.1 | CIN_perte_vol_deterioration.pdf p.1 | CIN_modification_donnees.pdf p.1 | attestation_residence.pdf p.1;formulaire_CIN.pdf;102.6;2;2;
-3;Combien coûte le renouvellement d'une carte d'identité détériorée ?;25 dinars;"- 25 dinars [CIN_renouvellement.pdf, p. 1]";CIN_renouvellement.pdf p.1 | CIN_perte_vol_deterioration.pdf p.1 | CIN_perte_vol_deterioration.pdf p.1 | CIN_renouvellement.pdf p.1 | CIN_modification_donnees.pdf p.1;formulaire_CIN.pdf;65.7;2;2;
-4;Quels documents faut-il pour obtenir la carte d'identité pour la première fois ?;"Extrait de naissance de moins de 3 mois, attestation de nationalité, attestation de résidence, attestation de travail ou de scolarité, 3 photos, quittance du timbre fiscal";"- Pour obtenir la carte d'identité nationale pour la première fois, vous devez fournir : [CIN_renouvellement.pdf, p. 1]";attestation_residence.pdf p.1 | passeport_perte_tunisie.pdf p.1 | CIN_renouvellement.pdf p.1 | passeport_perte_etranger.pdf p.1 | CIN_premiere_fois.pdf p.1;formulaire_CIN.pdf;107.3;0;1;"Liste vide ; cite CIN_renouvellement au lieu de CIN_premiere_fois"
-5;À partir de quel âge la carte d'identité est-elle obligatoire ?;15 ans (entre 12 et 15 ans à titre exceptionnel);"La carte d'identité est obligatoire à partir de 15 ans [CIN_premiere_fois.pdf, p. 1].";CIN_premiere_fois.pdf p.1 | loi_2024-22_CIN.pdf p.2 | CIN_premiere_fois.pdf p.1 | CIN_modification_donnees.pdf p.1 | guide_orientation_citoyen.pdf p.2;formulaire_CIN.pdf;135.8;2;2;15 ans (l'exception 12-15 ans n'est pas mentionnée)
-6;"Je me suis mariée, comment changer les données de ma carte d'identité ?";"Extrait de naissance ou copie de l'acte de mariage, la carte à changer, 3 photos, quittance du timbre fiscal";"- Vous devez fournir : [CIN_modification_donnees.pdf, p. 1]
-- Vous devez fournir une attestation ou une pièce justifiant le changement, comme un extrait de mariage. [CIN_modification_donnees.pdf, p. 1]";CIN_modification_donnees.pdf p.1 | CIN_modification_donnees.pdf p.1 | CIN_renouvellement.pdf p.1 | CIN_perte_vol_deterioration.pdf p.1 | loi_2024-22_CIN.pdf p.2;formulaire_CIN.pdf;121.8;1;2;"Seulement l'extrait de mariage : manquent la carte, les 3 photos, la quittance"
-7;"J'ai déménagé, dois-je changer ma carte d'identité ?";"Oui, modification de données avec une attestation de résidence";"- Changement de la carte d'identité nationale (CIN) pour modification de données [CIN_modification_donnees.pdf, p. 1]
-- Vous devez fournir une attestation prouvant le nouveau lieu de résidence [CIN_modification_donnees.pdf, p. 1]
-- La case n° 3 « remplacement » (taawidh) semble la plus logique, mais il faut le confirmer au poste de police [CIN_modification_donnees.pdf, p. 1]";CIN_modification_donnees.pdf p.1 | CIN_perte_vol_deterioration.pdf p.1 | CIN_modification_donnees.pdf p.1 | CIN_renouvellement.pdf p.1 | CIN_renouvellement.pdf p.1;formulaire_CIN.pdf;91.8;2;2;"Attestation de résidence ; note sur la case n° 3"
-8;Dans quel délai faut-il renouveler sa carte d'identité expirée ?;30 jours au maximum;"Dans quel délai faut-il renouveler sa carte d'identité expirée ? [guide_orientation_citoyen.pdf, p. 2]";CIN_renouvellement.pdf p.1 | loi_2024-22_CIN.pdf p.2 | CIN_renouvellement.pdf p.1 | guide_orientation_citoyen.pdf p.2 | loi_2024-22_CIN.pdf p.4;formulaire_CIN.pdf;40.4;0;2;Répète la question sans répondre (30 jours absent)
-9;Combien de photos faut-il pour une demande de passeport ?;"4 photos, fond blanc, 3,5 x 4,5 cm";"- 4 photos d'identité : fond blanc, format 3,5 × 4,5 cm. [passeport_perte_etranger.pdf, p. 1] [passeport_perte_tunisie.pdf, p. 1]";passeport_perte_etranger.pdf p.1 | passeport_perte_tunisie.pdf p.1 | guide_orientation_citoyen.pdf p.2 | passeport_premiere_fois_renouvellement_tunisie.pdf p.1 | passeport_renouvellement_etranger.pdf p.1;formulaire_passeport.pdf | autorisation_parentale_consulat.pdf;77.9;2;2;
-10;Quel est le prix d'un passeport pour un étudiant ?;25 TND;"- Le prix d'un passeport pour un étudiant est de 25 TND [passeport_premiere_fois_renouvellement_tunisie.pdf, p. 1].";passeport_premiere_fois_renouvellement_tunisie.pdf p.1 | passeport_premiere_fois_etranger.pdf p.1 | guide_orientation_citoyen.pdf p.1 | passeport_deterioration_etranger.pdf p.1 | passeport_renouvellement_etranger.pdf p.1;formulaire_passeport.pdf;157.2;2;2;
-11;Comment obtenir un passeport pour la première fois en Tunisie ?;"Formulaire, copie de la CIN, 4 photos, quittance du timbre fiscal, justificatif de scolarité pour les élèves et étudiants";"- Pour obtenir un passeport pour la première fois en Tunisie, vous devez contacter le Ministère de l'Intérieur.
-- Les frais varient selon la catégorie du demandeur : 25 TND pour les élèves, étudiants et les enfants de moins de 6 ans, 80 TND pour les autres demandeurs et 150 TND pour les passeports vétustes ou altérés.
-- Les documents requis incluent un formulaire d'obtention d'un passeport, une copie de la carte d'identité nationale avec présentation de l'original, ou un extrait de naissance pour les mineurs, 4 photos d'identité, un justificatif de scolarité pour les élèves et étudiants, une autorisation du tuteur pour les mineurs, accompagnée d'une copie de sa carte d'identité nationale, une quittance de paiement du droit de timbre fiscal, et l'ancien passeport en cas de renouvellement.
-- Il est nécessaire de justifier de sa nationalité tunisienne avec une attestation prouvant la nationalité tunisienne et une attestation de résidence.
-- Les étapes sont : remplir le formulaire, présenter les documents requis, et payer le droit de timbre fiscal.";passeport_premiere_fois_renouvellement_tunisie.pdf p.1 | passeport_deterioration_tunisie.pdf p.1 | passeport_premiere_fois_renouvellement_tunisie.pdf p.1 | passeport_perte_tunisie.pdf p.1 | CIN_premiere_fois.pdf p.1;formulaire_passeport.pdf;153.3;2;1;"Pièces correctes mais aucune citation ; ajoute nationalité/résidence venant de la fiche CIN"
-12;"J'ai perdu mon passeport en Tunisie, quelles pièces dois-je fournir ?";"Formulaire, copie de la CIN, 4 photos, attestation de déclaration de perte, quittance, document prouvant la nécessité du duplicata";"- Vous devez fournir un formulaire d'obtention d'un passeport rempli et signé.
-- Vous devez fournir votre ancien passeport, si vous souhaitez le récupérer.
-- Vous devez fournir une copie de votre carte d'identité nationale avec présentation de l'original, ou un extrait de naissance pour les mineurs.
-- Vous devez fournir 4 photos d'identité : fond blanc, format 3,5 × 4,5 cm.
-- Vous devez fournir une autorisation du tuteur, accompagnée d'une copie de sa carte d'identité, pour les mineurs.
-- Vous devez fournir une quittance de paiement du droit de timbre fiscal dû.
-- Vous devez fournir une attestation de déclaration de perte.
-- Vous devez vous rendre au poste de police ou à la garde nationale de votre lieu de résidence ou de la perte.
-- Vous devez payer 5 DT (attestation) + 25 DT (nouvelle carte) pour obtenir une nouvelle carte d'identité nationale.
-- Vous devez fournir deux exemplaires de la copie de la carte de résidence et de la carte consulaire, si vous êtes un résident à l'étranger.
-- Vous devez fournir une autorisation du tuteur légal, signée, légalisée et motivée, si vous êtes un mineur de moins de 18 ans.
-- [passeport_premiere_fois_renouvellement_tunisie.pdf, p. 1]";passeport_premiere_fois_renouvellement_tunisie.pdf p.1 | passeport_deterioration_tunisie.pdf p.1 | passeport_perte_tunisie.pdf p.1 | guide_orientation_citoyen.pdf p.1 | CIN_premiere_fois.pdf p.1;formulaire_passeport.pdf;168.7;1;1;"Mélange avec la CIN (5 DT + 25 DT, carte consulaire) ; oublie le document prouvant la nécessité"
-13;"J'habite en France et j'ai perdu mon passeport, que faire ?";"Duplicata : attestation de perte, justificatif de résidence à l'étranger, 150 TND en devises";"- Pour demander un nouveau passeport, il faut être libre des interdictions prévues par la loi n° 75-40 (article [guide_orientation_citoyen.pdf, p. 3]).
-- Pour déclarer la perte de votre passeport, vous devez vous présenter au poste de police ou de la garde nationale, déclarer l'objet perdu et le lieu de la perte, avec un timbre fiscal de 5 dinars (CIN_perte_vol_deterioration.pdf, p. 1).
-- Pour obtenir l'attestation de déclaration de perte, vous devez présenter un timbre fiscal de 5 dinars (CIN_perte_vol_deterioration.pdf, p. 1).
-- Pour obtenir un nouveau passeport, vous devez fournir : le formulaire d'obtention d'un passeport rempli et signé, une copie de votre carte d'identité nationale avec présentation de l'original, ou un extrait de naissance pour les mineurs, 4 photos d'identité, une attestation de déclaration de perte du passeport, une autorisation du tuteur accompagnée d'une copie de sa carte d'identité pour les mineurs, un justificatif de scolarisation pour les élèves et les étudiants, une pièce prouvant la résidence réglementaire à l'étranger, et une quittance de paiement du droit de timbre fiscal dû (passeport_perte_etranger.pdf, p. 1).";guide_orientation_citoyen.pdf p.3 | CIN_perte_vol_deterioration.pdf p.1 | CIN_modification_donnees.pdf p.1 | passeport_perte_etranger.pdf p.1 | attestation_residence.pdf p.1;formulaire_CIN.pdf;249.2;1;1;"Pièces passeport correctes mais démarche CIN (poste de police, 5 dinars) ; 150 TND absent"
-14;"Mon passeport est abîmé, que dois-je faire ?";"Changement du passeport : le passeport à changer, 150 TND s'il est vétuste ou altéré";"- Vous devez vous rendre au poste de police le plus proche ou à la garde nationale de votre lieu de résidence pour changer votre passeport abîmé. [passeport_deterioration_tunisie.pdf, p. 1]
-- Le coût est de 150 TND. [passeport_deterioration_tunisie.pdf, p. 1]
-- Les documents nécessaires sont : le formulaire d'obtention d'un passeport, rempli et signé ; votre ancien passeport à changer ; une copie de votre carte d'identité nationale avec présentation de l'original, ou un extrait de naissance pour les mineurs ; 4 photos d'identité ; et une autorisation du tuteur pour les mineurs. [passeport_deterioration_tunisie.pdf, p. 1]
-- Le délai est de 15 jours. [passeport_deterioration_tunisie.pdf, p. 1]
-- Le formulaire officiel de demande de passeport ordinaire est disponible au poste de police et en téléchargement sur Idaraty. [passeport_deterioration_tunisie.pdf, p. 1]";passeport_deterioration_tunisie.pdf p.1 | passeport_deterioration_etranger.pdf p.1 | guide_orientation_citoyen.pdf p.1 | passeport_perte_tunisie.pdf p.1 | passeport_deterioration_etranger.pdf p.1;formulaire_passeport.pdf;267.2;2;2;
-15;Comment renouveler mon passeport quand je vis à l'étranger ?;"Ancien passeport, justificatif de résidence à l'étranger, 80 TND ou 25 TND";"- Vous devez être de nationalité tunisienne pour le renouvellement.
-- L'organisme est le Ministère de l'Intérieur.
-- La durée de la procédure est de 15 jours.
-- Le coût est de 80 TND pour les demandeurs autres que les étudiants et les élèves qui justifient de leur qualité par un certificat, et les enfants de moins de 7 ans (ainsi que leur prorogation).
-- Les pré-requis incluent d'être de nationalité tunisienne et de ne pas avoir d'interdictions légales.
-- Les étapes sont :
-  - Fournir un formulaire de demande de passeport.
-  - Fournir une copie de la carte d'identité nationale avec présentation de l'original, ou un extrait de naissance pour les mineurs.
-  - Fournir 4 photos d'identité : fond blanc, format 3,5 × 4,5 cm.
-  - Fournir un justificatif de scolarisation pour les élèves et les étudiants.
-  - Fournir une autorisation du tuteur pour les mineurs, accompagnée d'une copie de sa carte d'identité nationale.
-  - Fournir une quittance de paiement du droit de timbre fiscal dû.
-  - Joindre l'ancien passeport.
-  - Si l'intéressé souhaite garder l'ancien passeport : présenter une demande sur papier ordinaire.
-  - Fournir un document prouvant la résidence réglementaire à l'étranger.
-- Le document utile est l'autorisation parentale pour nouveau passeport ou son renouvellement (pour les mineurs) : [autorisation_parentale_nouveau_passeport-renouvellement, p. 1].
--";passeport_renouvellement_etranger.pdf p.1 | guide_orientation_citoyen.pdf p.1 | passeport_perte_etranger.pdf p.1 | passeport_premiere_fois_etranger.pdf p.1 | passeport_renouvellement_etranger.pdf p.1;formulaire_passeport.pdf | autorisation_parentale_consulat.pdf;282.3;1;1;"Pièces complètes mais coût confus (25 TND) ; citations absentes et nom de fichier inventé"
-16;Puis-je garder mon ancien passeport après le renouvellement ?;"Oui, sur demande écrite sur papier ordinaire";"- Vous pouvez garder votre ancien passeport après le renouvellement si vous présentez une demande sur papier ordinaire. [passeport_renouvellement_etranger.pdf, p. 1]";passeport_premiere_fois_renouvellement_tunisie.pdf p.1 | passeport_renouvellement_etranger.pdf p.1 | guide_orientation_citoyen.pdf p.3 | passeport_perte_etranger.pdf p.1 | guide_orientation_citoyen.pdf p.1;formulaire_passeport.pdf | autorisation_parentale_consulat.pdf;95.3;2;2;
-17;Où obtenir un extrait de naissance ?;Municipalité (bureau d'état civil) ou en ligne sur e-Houwiya;"Organisme : Municipalité (bureau d'état civil) [extrait_naissance.pdf, p. 1]
+1;"J'ai perdu ma carte d'identité, que dois-je faire ?";"Déclarer la perte au poste de police ou de la garde nationale, puis déposer un dossier avec l'attestation de perte, 3 photos et un timbre de 25 dinars";"Voici les démarches à suivre en cas de perte de votre carte d'identité nationale :
 
-Autre document d'état civil, en indiquant s'il s'agit d'un acte original, d'une déclaration ou d'un jugement (pour l'extrait de naissance). [extrait_naissance.pdf, p. 1]
+## Changement de la carte d'identité nationale pour perte
 
-Enveloppe timbrée portant l'adresse du demandeur, si la demande est faite par voie postale. [extrait_naissance.pdf, p. 1]
+### Étapes
+- Déclarer immédiatement la perte au poste de police ou à la garde nationale du lieu de résidence ou du lieu de la perte ; les services vérifieront votre identité avant de délivrer le certificat de perte [**CIN_perte_vol_deterioration.pdf, p. 1**].
+- Obtenir l’attestation de déclaration de perte en vous présentant au poste de police ou à la garde nationale avec un timbre fiscal de 5 DT [**CIN_perte_vol_deterioration.pdf, p. 1**].
+- Déposer le dossier complet (formulaire + pièces) au poste de police ou à la garde nationale du lieu de résidence [**CIN_perte_vol_deterioration.pdf, p. 1**].
+- Le dossier sera transmis à la brigade régionale de la police technique et scientifique ainsi qu’à la sous-direction de l’identification nationale [**CIN_perte_vol_deterioration.pdf, p. 1**].
 
-Demande en ligne : e-Houwiya [guide_orientation_citoyen.pdf, p. 2]";extrait_naissance.pdf p.1 | extrait_naissance.pdf p.1 | guide_orientation_citoyen.pdf p.2 | CIN_modification_donnees.pdf p.1 | CIN_renouvellement.pdf p.1;formulaire_CIN.pdf;123.1;2;2;"Municipalité et e-Houwiya ; ajoute des pièces non demandées"
-18;Combien coûte un extrait de naissance ?;"0,500 TND";"- 0,500 TND [extrait_naissance.pdf, p. 1]";extrait_naissance.pdf p.1 | extrait_naissance.pdf p.1 | guide_orientation_citoyen.pdf p.2 | CIN_renouvellement.pdf p.1 | attestation_residence.pdf p.1;;38.3;2;2;
-19;Où demander une attestation de résidence ?;Poste de police ou de la garde nationale;"- Organisme : Ministère de l'Intérieur – poste de police ou de la garde nationale (ce n'est pas la municipalité) [attestation_residence.pdf, p. 1]";attestation_residence.pdf p.1 | attestation_residence.pdf p.1 | CIN_perte_vol_deterioration.pdf p.1 | CIN_modification_donnees.pdf p.1 | CIN_premiere_fois.pdf p.1;formulaire_CIN.pdf;63.3;2;2;
-20;Combien coûte une attestation de résidence ?;Timbre fiscal de 5 dinars;"- Coût : timbre fiscal de 5 dinars [attestation_residence.pdf, p. 1]";attestation_residence.pdf p.1 | attestation_residence.pdf p.1 | guide_orientation_citoyen.pdf p.2 | CIN_premiere_fois.pdf p.1 | CIN_modification_donnees.pdf p.1;formulaire_CIN.pdf;63.7;2;2;
-21;Où faire légaliser ma signature ?;Bureau d'état civil de l'arrondissement municipal;"Légalisation de signature (Tunisie) [legalisation_signature.pdf, p. 1]
+### Documents à fournir
+- Formulaire administratif officiel de demande de carte d'identité nationale (cocher la case 2 « perte ») [**CIN_perte_vol_deterioration.pdf, p. 1**].
+- Attestation de déclaration de perte [**CIN_perte_vol_deterioration.pdf, p. 1**].
+- 3 photos d’identité (format 3/4 cm, fond blanc ou clair) [**CIN_perte_vol_deterioration.pdf, p. 1**].
+- Quittance de paiement du timbre fiscal de 25 DT [**CIN_perte_vol_deterioration.pdf, p. 1**].";CIN_perte_vol_deterioration.pdf p.1 | CIN_modification_donnees.pdf p.1 | CIN_perte_vol_deterioration.pdf p.1 | loi_2024-22_CIN.pdf p.2 | CIN_premiere_fois.pdf p.1;formulaire_CIN.pdf;3;2;2;"Complet (déclaration de perte, attestation, 3 photos, 25 DT)."
+2;Combien coûte le renouvellement d'une carte d'identité en bon état ?;3 dinars;"Voici la réponse à votre question :
 
-- Organisme : Municipalité – bureau d'état civil de l'arrondissement municipal
-- Durée : dans l'heure
-- Coût : Idaraty indique une redevance de 0 TND, pour chaque opération, dans la limite de trois par document.
+## Renouvellement de la carte d'identité nationale (CIN)
 
-Vous devez aller au bureau d'état civil de l'arrondissement municipal pour faire légaliser votre signature. Vous devrez présenter le document à légaliser, le document à légaliser, votre pièce officielle prouvant votre identité (comme votre carte d'identité nationale) et signer devant l'agent administratif chargé de la légalisation de signature.";legalisation_signature.pdf p.1 | legalisation_signature.pdf p.1 | attestation_residence.pdf p.1 | guide_orientation_citoyen.pdf p.2 | guide_orientation_citoyen.pdf p.1;;138.4;2;2;Correct mais long
-22;Un enfant mineur peut-il voyager avec l'autorisation d'un seul parent ?;"Oui : autorisation de l'un des deux parents, du tuteur ou de la personne à qui la garde a été confiée";- Je ne trouve pas cette information dans les documents.;loi_2015-46_passeports_mineurs.pdf p.2 | guide_orientation_citoyen.pdf p.2 | loi_75-40_passeports.pdf p.2 | passeport_deterioration_etranger.pdf p.1 | passeport_premiere_fois_etranger.pdf p.1;formulaire_passeport.pdf | autorisation_parentale_consulat.pdf;132.5;0;2;Refus à tort : la réponse est dans la loi 2015-46
-23;Dans quel délai faut-il déclarer une naissance ?;10 jours (15 jours hors commune ou à l'étranger);"- Je ne trouve pas cette information dans les documents. [loi_57-3_etat_civil.pdf, p. 3]";loi_57-3_etat_civil.pdf p.3 | loi_57-3_etat_civil.pdf p.4 | CIN_premiere_fois.pdf p.1 | CIN_premiere_fois.pdf p.1 | CIN_renouvellement.pdf p.1;formulaire_CIN.pdf;121.4;0;2;Refus à tort : « dix jours » est dans la loi 57-3 (p. 3 retrouvée)
-24;Dans quel délai faut-il déclarer un décès ?;3 jours;"- Le délai de déclaration des décès est de trois jours [loi_57-3_etat_civil.pdf, p. 7].";loi_57-3_etat_civil.pdf p.7 | loi_2024-22_CIN.pdf p.2 | loi_57-3_etat_civil.pdf p.9 | guide_orientation_citoyen.pdf p.2;;65.6;2;2;
-25;Comment corriger une erreur dans un acte de naissance ?;Rectification ordonnée par le président du tribunal de première instance;"- Pour corriger une erreur dans un acte de naissance, il faut demander une rectification au Tribunal qui a déclaré la naissance.
-- Les décisions judiciaires portant rectification ne peuvent être opposées au tiers.
-- Quiconque aura sciemment menti en vue d'obtenir un jugement rectificatif d'un acte de l'État civil sera passible d'une peine d'emprisonnement d'un an et d'une amende de deux cent quarante dinars (240d, 000). [loi_57-3_etat_civil.pdf, p. 6]";CIN_modification_donnees.pdf p.1 | CIN_renouvellement.pdf p.1 | loi_57-3_etat_civil.pdf p.4 | loi_57-3_etat_civil.pdf p.10 | extrait_naissance.pdf p.1;formulaire_CIN.pdf;109.3;1;2;"Règle des jugements déclaratifs ; manque le Président du tribunal de première instance (art. 63)"
-26;Que devient la puce électronique du passeport en cas de perte ?;Elle est désactivée;"- La puce électronique est désactivée en cas de perte ou de vol ou de détérioration du passeport [loi_2024-23_passeports.pdf, p. 2]";loi_2024-23_passeports.pdf p.2 | loi_2024-22_CIN.pdf p.2 | loi_2024-23_passeports.pdf p.1 | loi_2024-22_CIN.pdf p.3 | CIN_perte_vol_deterioration.pdf p.1;formulaire_CIN.pdf;128.8;2;2;
-27;Quelles raisons peuvent empêcher la délivrance d'un passeport ?;"Mineur sans autorisation, obligations militaires, poursuites judiciaires, ordre public";"Sur requête du Parquet, s'il fait l'objet de poursuites judiciaires, s'il est recherché pour crime ou délit, ou s'il doit purger une peine de prison à la suite d'une condamnation. [loi_75-40_passeports.pdf, p. 1]";passeport_perte_tunisie.pdf p.1 | loi_75-40_passeports.pdf p.2 | loi_75-40_passeports.pdf p.3 | passeport_perte_etranger.pdf p.1 | passeport_deterioration_etranger.pdf p.1;formulaire_passeport.pdf;135.1;1;2;Une seule raison sur quatre (poursuites judiciaires)
-28;Combien de temps faut-il pour obtenir un duplicata de passeport quand on vit à l'étranger ?;15 jours;"- 15 jours [passeport_perte_etranger.pdf, p. 1]";passeport_perte_etranger.pdf p.1 | passeport_perte_etranger.pdf p.1 | passeport_premiere_fois_etranger.pdf p.1 | guide_orientation_citoyen.pdf p.1 | passeport_renouvellement_etranger.pdf p.1;formulaire_passeport.pdf | autorisation_parentale_consulat.pdf;71.7;2;2;
-29;Combien de temps prend une légalisation de signature ?;"Dans l'heure, sans frais (0 TND)";"- 1 heure [legalisation_signature.pdf, p. 1]";legalisation_signature.pdf p.1 | legalisation_signature.pdf p.1 | CIN_premiere_fois.pdf p.1 | loi_2024-22_CIN.pdf p.2 | CIN_modification_donnees.pdf p.1;formulaire_CIN.pdf;66.9;2;2;"1 heure ; la gratuité n'est pas mentionnée"
-30;Quelle case cocher sur le formulaire de carte d'identité en cas de perte ?;La case n° 2 « perte » (dhayaa);"Case 2 (en arabe : dhayaa) [CIN_perte_vol_deterioration.pdf, p. 1]";CIN_perte_vol_deterioration.pdf p.1 | CIN_renouvellement.pdf p.1 | CIN_modification_donnees.pdf p.1 | guide_orientation_citoyen.pdf p.2 | CIN_premiere_fois.pdf p.1;formulaire_CIN.pdf;87.4;2;2;
-31;Comment obtenir un permis de conduire ?;Hors sujet : le chatbot doit dire qu'il ne trouve pas l'information;Je ne trouve pas cette information dans les documents.;legalisation_signature.pdf p.1 | CIN_perte_vol_deterioration.pdf p.1 | guide_orientation_citoyen.pdf p.2 | passeport_renouvellement_etranger.pdf p.1 | attestation_residence.pdf p.1;formulaire_CIN.pdf;54.2;2;2;Refus correct
-32;Quel temps fait-il à Tunis aujourd'hui ?;Hors sujet : le chatbot doit dire qu'il ne trouve pas l'information;"Je ne trouve pas cette information dans les documents. [loi_2015-46_passeports_mineurs.pdf, p. 2]";loi_2015-46_passeports_mineurs.pdf p.2 | passeport_premiere_fois_renouvellement_tunisie.pdf p.1 | passeport_renouvellement_etranger.pdf p.1 | passeport_premiere_fois_etranger.pdf p.1 | passeport_deterioration_etranger.pdf p.1;;139.0;2;2;Refus correct
-33;Comment créer une entreprise en Tunisie ?;Hors sujet : le chatbot doit dire qu'il ne trouve pas l'information;Je ne trouve pas cette information dans les documents.;CIN_premiere_fois.pdf p.1 | extrait_naissance.pdf p.1 | passeport_premiere_fois_renouvellement_tunisie.pdf p.1 | passeport_premiere_fois_renouvellement_tunisie.pdf p.1 | passeport_deterioration_tunisie.pdf p.1;;78.1;2;2;Refus correct
-34;Comment ouvrir un compte bancaire ?;Hors sujet : le chatbot doit dire qu'il ne trouve pas l'information;Je ne trouve pas cette information dans les documents.;CIN_renouvellement.pdf p.1 | attestation_residence.pdf p.1 | guide_orientation_citoyen.pdf p.1 | passeport_deterioration_tunisie.pdf p.1 | CIN_perte_vol_deterioration.pdf p.1;;60.0;2;2;Refus correct
-35;Quel est le prix d'un billet de train entre Tunis et Sousse ?;Hors sujet : le chatbot doit dire qu'il ne trouve pas l'information;Je ne trouve pas cette information dans les documents.;passeport_premiere_fois_renouvellement_tunisie.pdf p.1 | passeport_renouvellement_etranger.pdf p.1 | loi_75-40_passeports.pdf p.5 | passeport_renouvellement_etranger.pdf p.1 | passeport_premiere_fois_etranger.pdf p.1;;77.1;2;2;Refus correct
+### Coût
+- Carte en bon état : **3 dinars** [CIN_renouvellement.pdf, p. 1]";CIN_renouvellement.pdf p.1 | CIN_renouvellement.pdf p.1 | CIN_perte_vol_deterioration.pdf p.1 | CIN_modification_donnees.pdf p.1 | attestation_residence.pdf p.1;formulaire_CIN.pdf;"1,3";2;2;
+3;Combien coûte le renouvellement d'une carte d'identité détériorée ?;25 dinars;"Voici le tarif pour le renouvellement d’une carte d’identité détériorée :
+
+## Renouvellement de la carte d'identité nationale (CIN)
+
+### Coût
+- 25 dinars pour une carte détériorée [CIN_renouvellement.pdf, p. 1]";CIN_renouvellement.pdf p.1 | CIN_perte_vol_deterioration.pdf p.1 | CIN_perte_vol_deterioration.pdf p.1 | CIN_renouvellement.pdf p.1 | CIN_modification_donnees.pdf p.1;formulaire_CIN.pdf;"1,3";2;2;
+4;Quels documents faut-il pour obtenir la carte d'identité pour la première fois ?;"Extrait de naissance de moins de 3 mois, attestation de nationalité, attestation de résidence, attestation de travail ou de scolarité, 3 photos, quittance du timbre fiscal";"Voici les documents requis pour obtenir une carte d'identité nationale pour la première fois :
+
+## Demande de carte d'identité nationale – première fois
+
+### Documents à fournir
+- Formulaire officiel de demande de carte d'identité nationale (ministère de l'Intérieur), en arabe ; il faut cocher la case « première fois » [**CIN_premiere_fois.pdf, p. 1**]
+- (Facultatif) Certificat indiquant le groupe sanguin [**CIN_premiere_fois.pdf, p. 1**]";attestation_residence.pdf p.1 | passeport_perte_tunisie.pdf p.1 | CIN_renouvellement.pdf p.1 | passeport_perte_etranger.pdf p.1 | CIN_premiere_fois.pdf p.1;;"1,7";0;2;"Il ne donne que le formulaire et le groupe sanguin : la liste des papiers manque. Cause : le 1er résultat est attestation_residence, et la fiche CIN_premiere_fois n'arrive qu'en 5e position (page entière non envoyée au LLM). Aucun formulaire proposé."
+5;À partir de quel âge la carte d'identité est-elle obligatoire ?;15 ans (entre 12 et 15 ans à titre exceptionnel);"La carte d'identité nationale devient obligatoire dès **15 ans** pour les ressortissants tunisiens ; elle peut être délivrée entre 12 et 15 ans uniquement à titre exceptionnel.  
+
+- 15 ans obligatoire : [CIN_premiere_fois.pdf, p. 1]  
+- 12-15 ans possible à titre exceptionnel : [CIN_premiere_fois.pdf, p. 1]  ";CIN_premiere_fois.pdf p.1 | loi_2024-22_CIN.pdf p.2 | CIN_premiere_fois.pdf p.1 | CIN_modification_donnees.pdf p.1 | guide_orientation_citoyen.pdf p.2;formulaire_CIN.pdf;"1,6";2;2;
+6;"Je me suis mariée, comment changer les données de ma carte d'identité ?";"Extrait de naissance ou copie de l'acte de mariage, la carte à changer, 3 photos, quittance du timbre fiscal";"Voici les documents à fournir pour modifier les données de votre carte d'identité après le mariage :
+
+## Changement de la carte d'identité nationale (modification de données)
+
+### Documents à fournir
+- Formulaire rempli et signé. [CIN_modification_donnees.pdf, p. 1]  
+- La carte à changer. [CIN_modification_donnees.pdf, p. 1]  
+- Extrait de naissance ou copie de l'acte de mariage justifiant le changement de situation familiale. [CIN_modification_donnees.pdf, p. 1]  
+- 3 photos d'identité (format 3/4 cm, fond blanc ou clair). [CIN_modification_donnees.pdf, p. 1]  
+- Quittance de paiement du droit de timbre fiscal dû. [CIN_modification_donnees.pdf, p. 1]  ";CIN_modification_donnees.pdf p.1 | CIN_modification_donnees.pdf p.1 | CIN_renouvellement.pdf p.1 | CIN_perte_vol_deterioration.pdf p.1 | loi_2024-22_CIN.pdf p.2;formulaire_CIN.pdf;"1,5";2;2;
+7;"J'ai déménagé, dois-je changer ma carte d'identité ?";"Oui, modification de données avec une attestation de résidence";"Voici la réponse concise :
+
+## Changement de la carte d'identité nationale (CIN) pour modification de données
+
+### Documents à fournir
+- Formulaire rempli et signé : formulaire officiel de demande de carte d'identité nationale (ministère de l'Intérieur) en arabe [**CIN_modification_donnees.pdf, p. 1**]  
+- La carte à changer [**CIN_modification_donnees.pdf, p. 1**]  
+- Attestation prouvant le nouveau lieu de résidence (justificatif du changement d’adresse) [**CIN_modification_donnees.pdf, p. 1**]  
+- 3 photos d’identité format 3/4 cm, fond blanc ou clair [**CIN_modification_donnees.pdf, p. 1**]  
+- Quittance de paiement du droit de timbre fiscal dû [**CIN_modification_donnees.pdf, p. 1**]  ";CIN_modification_donnees.pdf p.1 | CIN_perte_vol_deterioration.pdf p.1 | CIN_modification_donnees.pdf p.1 | CIN_renouvellement.pdf p.1 | CIN_renouvellement.pdf p.1;formulaire_CIN.pdf;"1,8";2;2;"Ne dit pas « oui » clairement, mais le sens est juste."
+8;Dans quel délai faut-il renouveler sa carte d'identité expirée ?;30 jours au maximum;"Voici la réponse concise :
+
+## Renouvellement de la carte d'identité nationale
+
+### Délai
+- La carte d'identité doit être renouvelée dans un délai maximal de **30 jours** en cas d'expiration. [guide_orientation_citoyen.pdf, p. 2]  
+- La même règle est confirmée par la loi organique n° 2024-22 : le renouvellement doit intervenir dans les **30 jours** suivant l’expiration. [loi_2024-22_CIN.pdf, p. 2]  ";CIN_renouvellement.pdf p.1 | loi_2024-22_CIN.pdf p.2 | CIN_renouvellement.pdf p.1 | guide_orientation_citoyen.pdf p.2 | loi_2024-22_CIN.pdf p.4;formulaire_CIN.pdf;"1,8";2;2;
+9;Combien de photos faut-il pour une demande de passeport ?;"4 photos, fond blanc, 3,5 x 4,5 cm";"Voici la réponse :
+
+## Demande de passeport
+
+### Photos d'identité
+- 4 photos d'identité (fond blanc, format 3,5 × 4,5 cm) [passeport_perte_etranger.pdf, p. 1]  
+- 4 photos d'identité (fond blanc, format 3,5 × 4,5 cm) [passeport_perte_tunisie.pdf, p. 1]  
+- 4 photos d'identité (fond blanc, format 3,5 × 4,5 cm) [passeport_premiere_fois_renouvellement_tunisie.pdf, p. 1]  
+- 4 photos d'identité (fond blanc, format 3,5 × 4,5 cm) [passeport_renouvellement_etranger.pdf, p. 1]  ";passeport_perte_etranger.pdf p.1 | passeport_perte_tunisie.pdf p.1 | guide_orientation_citoyen.pdf p.2 | passeport_premiere_fois_renouvellement_tunisie.pdf p.1 | passeport_renouvellement_etranger.pdf p.1;formulaire_passeport.pdf | autorisation_parentale_consulat.pdf;"1,9";2;2;La même ligne est répétée 4 fois (une par PDF). Formulaire autorisation_parentale inutile ici.
+10;Quel est le prix d'un passeport pour un étudiant ?;25 TND;"Voici le tarif applicable :
+
+## Prix du passeport pour un étudiant
+
+- 25 TND pour les élèves et les étudiants [passeport_premiere_fois_renouvellement_tunisie.pdf, p. 1]";passeport_premiere_fois_renouvellement_tunisie.pdf p.1 | passeport_premiere_fois_etranger.pdf p.1 | guide_orientation_citoyen.pdf p.1 | passeport_deterioration_etranger.pdf p.1 | passeport_renouvellement_etranger.pdf p.1;formulaire_passeport.pdf;"2,5";2;2;
+11;Comment obtenir un passeport pour la première fois en Tunisie ?;"Formulaire, copie de la CIN, 4 photos, quittance du timbre fiscal, justificatif de scolarité pour les élèves et étudiants";"Voici les informations essentielles pour obtenir un passeport pour la première fois en Tunisie.
+
+## Obtention d'un passeport (première fois) – Tunisie
+
+### Documents à fournir
+- Formulaire d'obtention d'un passeport (rempli et signé) [**passeport_premiere_fois_renouvellement_tunisie.pdf**, p. 1]  
+- Copie de la carte d'identité nationale avec présentation de l'original, ou un extrait de naissance pour les mineurs [**passeport_premiere_fois_renouvellement_tunisie.pdf**, p. 1]  
+- 4 photos d'identité : fond blanc, format 3,5 × 4,5 cm [**passeport_premiere_fois_renouvellement_tunisie.pdf**, p. 1]  
+- Justificatif de scolarisation pour les élèves et les étudiants [**passeport_premiere_fois_renouvellement_tunisie.pdf**, p. 1]  
+- Autorisation du tuteur pour les mineurs, accompagnée d'une copie de sa carte d'identité nationale [**passeport_premiere_fois_renouvellement_tunisie.pdf**, p. 1]  
+- Quittance de paiement du droit de timbre fiscal dû [**passeport_premiere_fois_renouvellement_tunisie.pdf**, p. 1]
+
+### Étapes
+1. Télécharger et remplir le formulaire officiel de demande de passeport (case « première fois ») [**passeport_premiere_fois_renouvellement_tunisie.pdf**, p. 1]  
+2. Réunir l’ensemble des pièces listées ci-dessus [**passeport_premiere_fois_renouvellement_tunisie.pdf**, p. 1]  
+3. Se rendre au service du Ministère de l'Intérieur (poste de police ou centre d'accueil) avec les documents originaux et les copies [**passeport_premiere_fois_renouvellement_tunisie.pdf**, p. 1]  
+4. Présenter la quittance de paiement du timbre fiscal [**passeport_premiere_fois_renouvellement_tunisie.pdf**, p. 1]  
+5. Déposer la demande ; le passeport sera délivré après le délai indiqué [**passeport_premiere_fois_renouvellement_tunisie.pdf**, p. 1]
+
+### Coût
+- Élèves, étudiants et enfants < 6 ans : **25 TND** [**passeport_premiere_fois_renouvellement_tunisie.pdf**, p. 1]  
+- Autres demandeurs : **80 TND** [**passeport_premiere_fois_renouvellement_tunisie.pdf**, p. 1]  
+
+### Délai
+- **15 jours** à compter du dépôt de la demande [**passeport_premiere_fois_renouvellement_tunisie.pdf**, p. 1]  ";passeport_premiere_fois_renouvellement_tunisie.pdf p.1 | passeport_deterioration_tunisie.pdf p.1 | passeport_premiere_fois_renouvellement_tunisie.pdf p.1 | passeport_perte_tunisie.pdf p.1 | CIN_premiere_fois.pdf p.1;formulaire_passeport.pdf;"2,6";2;2;
+12;"J'ai perdu mon passeport en Tunisie, quelles pièces dois-je fournir ?";"Formulaire, copie de la CIN, 4 photos, attestation de déclaration de perte, quittance, document prouvant la nécessité du duplicata";"Voici les documents à fournir pour obtenir un duplicata de passeport perdu en Tunisie :
+
+## Duplicata de passeport – perte (Tunisie)
+
+### Documents à fournir
+- Attestation de déclaration de perte du passeport : délivrée par le poste de police ou la garde nationale du lieu de résidence ou du lieu de la perte?guide_orientation_citoyen.pdf, p. 1?  
+- Quittance de paiement du timbre fiscal dû (montant indiqué sur le formulaire)?guide_orientation_citoyen.pdf, p. 1?  
+- Formulaire d’obtention d’un passeport, rempli et signé?passeport_perte_tunisie.pdf, p. 1?  
+- Copie de la carte d’identité nationale avec présentation de l’original, ou un extrait de naissance pour les mineurs?passeport_perte_tunisie.pdf, p. 1?  
+- 4 photos d’identité : fond blanc, format 3,5 × 4,5 cm?passeport_perte_tunisie.pdf, p. 1?  
+- Autorisation du tuteur (et copie de sa carte d’identité) pour les mineurs?passeport_perte_tunisie.pdf, p. 1?  ";passeport_premiere_fois_renouvellement_tunisie.pdf p.1 | passeport_deterioration_tunisie.pdf p.1 | passeport_perte_tunisie.pdf p.1 | guide_orientation_citoyen.pdf p.1 | CIN_premiere_fois.pdf p.1;formulaire_passeport.pdf;"2,5";1;2;"Presque complet ; il manque le document prouvant la nécessité du duplicata. Sources écrites avec ? ? au lieu de [ ]."
+13;"J'habite en France et j'ai perdu mon passeport, que faire ?";"Duplicata : attestation de perte, justificatif de résidence à l'étranger, 150 TND en devises";"Voici les démarches à suivre lorsque vous résidez en France et avez perdu votre passeport :
+
+## Perte du passeport à l’étranger
+
+### Documents à fournir
+- Formulaire d’obtention d’un passeport, rempli et signé dans la case prévue [**passeport_perte_etranger.pdf, p. 1**]  
+- Copie de la carte d’identité nationale avec présentation de l’original, ou un extrait de naissance pour les mineurs [**passeport_perte_etranger.pdf, p. 1**]  
+- 4 photos d’identité : fond blanc, format 3,5 × 4,5 cm [**passeport_perte_etranger.pdf, p. 1**]  
+- Attestation de déclaration de perte du passeport [**passeport_perte_etranger.pdf, p. 1**]  
+- Autorisation du tuteur et copie de sa carte d’identité pour les mineurs [**passeport_perte_etranger.pdf, p. 1**]  
+- Justificatif de scolarisation pour les élèves et les étudiants [**passeport_perte_etranger.pdf, p. 1**]  
+- Pièce prouvant la résidence réglementaire à l’étranger [**passeport_perte_etranger.pdf, p. 1**]  
+- Quittance de paiement du droit de timbre fiscal dû [**passeport_perte_etranger.pdf, p. 1**]  
+
+### Étapes
+1. **Déclarer la perte** du passeport auprès des autorités compétentes (police ou gendarmerie) en France afin d’obtenir l’attestation de déclaration de perte.  
+2. **Rassembler les documents** listés ci-dessus.  
+3. **Se rendre au consulat ou à l’ambassade de Tunisie** en France avec le dossier complet.  
+4. **Déposer la demande** de nouveau passeport en remplissant le formulaire et en présentant les pièces justificatives.  
+5. **Payer le timbre fiscal** correspondant et obtenir la quittance de paiement.  
+6. **Attendre la délivrance** du nouveau passeport selon les délais indiqués par le consulat.  ";guide_orientation_citoyen.pdf p.3 | CIN_perte_vol_deterioration.pdf p.1 | CIN_modification_donnees.pdf p.1 | passeport_perte_etranger.pdf p.1 | attestation_residence.pdf p.1;;"2,9";1;1;"Il manque le prix (150 TND). Les étapes n'ont pas de source et viennent des connaissances du LLM (gendarmerie, ambassade). Aucun formulaire proposé."
+14;"Mon passeport est abîmé, que dois-je faire ?";"Changement du passeport : le passeport à changer, 150 TND s'il est vétuste ou altéré";"Voici les démarches à suivre pour remplacer un passeport abîmé en Tunisie :
+
+## Changement de passeport (passeport abîmé)
+
+### Étapes
+- Se rendre au poste de police ou à la garde nationale du lieu de résidence du demandeur et déposer le dossier ; le passeport ne peut être ni prêté ni envoyé par voie postale [**passeport_deterioration_tunisie.pdf, p. 1**].
+- Remplir le formulaire officiel de demande de passeport ordinaire (en arabe) en cochant la case n° 4 « remplacement » [**passeport_deterioration_tunisie.pdf, p. 1**].
+- Présenter le passeport à changer ainsi que les pièces justificatives (voir ci-dessous) [**passeport_deterioration_tunisie.pdf, p. 1**].
+- Payer le droit de timbre fiscal et obtenir la quittance de paiement [**passeport_deterioration_tunisie.pdf, p. 1**].
+- Attendre le délai de traitement de 15 jours pour la délivrance du nouveau passeport [**passeport_deterioration_tunisie.pdf, p. 1**].
+
+### Documents à fournir
+- Formulaire d’obtention d’un passeport, rempli et signé [**passeport_deterioration_tunisie.pdf, p. 1**].
+- Le passeport à changer [**passeport_deterioration_tunisie.pdf, p. 1**].
+- Copie de la carte d’identité nationale avec présentation de l’original, ou un extrait de naissance pour les mineurs [**passeport_deterioration_tunisie.pdf, p. 1**].
+- 4 photos d’identité (fond blanc, format 3,5 × 4,5 cm) [**passeport_deterioration_tunisie.pdf, p. 1**].
+- Autorisation du tuteur et copie de sa carte d’identité pour les mineurs [**passeport_deterioration_tunisie.pdf, p. 1**].
+- Justificatif de scolarisation pour les élèves et les étudiants [**passeport_deterioration_tunisie.pdf, p. 1**].
+- Quittance de paiement du droit de timbre fiscal dû [**passeport_deterioration_tunisie.pdf, p. 1**].";passeport_deterioration_tunisie.pdf p.1 | passeport_deterioration_etranger.pdf p.1 | guide_orientation_citoyen.pdf p.1 | passeport_perte_tunisie.pdf p.1 | passeport_deterioration_etranger.pdf p.1;formulaire_passeport.pdf;"2,3";1;2;"Démarche et papiers complets, mais il manque le prix (150 TND pour un passeport vétuste ou altéré)."
+15;Comment renouveler mon passeport quand je vis à l'étranger ?;"Ancien passeport, justificatif de résidence à l'étranger, 80 TND ou 25 TND";"Voici les informations pour renouveler votre passeport depuis l’étranger :
+
+## Renouvellement du passeport (Tunisiens résidant à l'étranger)
+
+### Étapes et pièces à fournir
+- Formulaire d'obtention d'un passeport (cocher la case n° 3 « renouvellement ») : formulaire officiel disponible sur Idaraty [**passeport_renouvellement_etranger.pdf, p. 1**]  
+- Copie de la carte d'identité nationale avec présentation de l'original, ou un extrait de naissance pour les mineurs [**passeport_renouvellement_etranger.pdf, p. 1**]  
+- 4 photos d'identité (fond blanc, format 3,5 × 4,5 cm) [**passeport_renouvellement_etranger.pdf, p. 1**]  
+- Justificatif de scolarisation pour les élèves et les étudiants [**passeport_renouvellement_etranger.pdf, p. 1**]  
+- Autorisation du tuteur pour les mineurs, accompagnée d’une copie de sa carte d'identité nationale [**passeport_renouvellement_etranger.pdf, p. 1**]  
+- Quittance de paiement du droit de timbre fiscal dû [**passeport_renouvellement_etranger.pdf, p. 1**]  
+- Ancien passeport (ou demande sur papier ordinaire si vous souhaitez le garder) [**passeport_renouvellement_etranger.pdf, p. 1**]  
+- Tout document prouvant la résidence réglementaire à l'étranger [**passeport_renouvellement_etranger.pdf, p. 1**]  
+
+### Coût
+- Étudiants, élèves (certificat) et enfants de moins de 7 ans : **25 TND** [**passeport_renouvellement_etranger.pdf, p. 1**]  
+- Autres demandeurs : **80 TND** [**passeport_renouvellement_etranger.pdf, p. 1**]  
+
+### Durée
+- Le délai de traitement est d’environ **15 jours** [**passeport_renouvellement_etranger.pdf, p. 1**]  ";passeport_renouvellement_etranger.pdf p.1 | guide_orientation_citoyen.pdf p.1 | passeport_perte_etranger.pdf p.1 | passeport_premiere_fois_etranger.pdf p.1 | passeport_renouvellement_etranger.pdf p.1;formulaire_passeport.pdf | autorisation_parentale_consulat.pdf;"3,7";2;2;
+16;Puis-je garder mon ancien passeport après le renouvellement ?;"Oui, sur demande écrite sur papier ordinaire";"Voici la réponse à votre question :
+
+## Conservation de l’ancien passeport après renouvellement
+
+### Possibilité de garder l’ancien passeport
+- Vous pouvez conserver votre ancien passeport : il suffit de présenter une **demande écrite** (sur papier ordinaire) lors du renouvellement [guide_orientation_citoyen.pdf, p. 3].
+
+- Cette procédure est également mentionnée dans la fiche de renouvellement : il faut **présenter une demande sur papier ordinaire** si vous souhaitez garder l’ancien passeport [passeport_premiere_fois_renouvellement_tunisie.pdf, p. 1].";passeport_premiere_fois_renouvellement_tunisie.pdf p.1 | passeport_renouvellement_etranger.pdf p.1 | guide_orientation_citoyen.pdf p.3 | passeport_perte_etranger.pdf p.1 | guide_orientation_citoyen.pdf p.1;formulaire_passeport.pdf;2;2;2;
+17;Où obtenir un extrait de naissance ?;Municipalité (bureau d'état civil) ou en ligne sur e-Houwiya;"Voici où vous pouvez obtenir un extrait de naissance en Tunisie :
+
+## Extrait de naissance
+
+### Où obtenir
+- Municipalité (bureau d'état civil) : le service d'état civil de la municipalité délivre l'extrait de naissance. [extrait_naissance.pdf, p. 1]  
+- En ligne sur le site e-Houwiya : la demande peut également être faite via la plateforme électronique. [extrait_naissance.pdf, p. 1]  ";extrait_naissance.pdf p.1 | extrait_naissance.pdf p.1 | guide_orientation_citoyen.pdf p.2 | CIN_modification_donnees.pdf p.1 | CIN_renouvellement.pdf p.1;;"1,3";2;2;
+18;Combien coûte un extrait de naissance ?;"0,500 TND";"Voici le tarif pour obtenir un extrait de naissance en Tunisie :
+
+## Extrait de naissance
+
+### Coût
+- 0,500 TND [extrait_naissance.pdf, p. 1]  
+- 0,500 TND [guide_orientation_citoyen.pdf, p. 2]  ";extrait_naissance.pdf p.1 | extrait_naissance.pdf p.1 | guide_orientation_citoyen.pdf p.2 | CIN_renouvellement.pdf p.1 | attestation_residence.pdf p.1;;"4,9";2;2;Prix répété deux fois (deux sources).
+19;Où demander une attestation de résidence ?;Poste de police ou de la garde nationale;"Voici où vous devez vous rendre pour obtenir une attestation de résidence :
+
+## Attestation de résidence
+
+### Où déposer
+- Au poste de police ou à la garde nationale dont dépend votre lieu de résidence : c’est l’organisme compétent pour délivrer ce document. [attestation_residence.pdf, p. 1]";attestation_residence.pdf p.1 | attestation_residence.pdf p.1 | CIN_perte_vol_deterioration.pdf p.1 | CIN_modification_donnees.pdf p.1 | CIN_premiere_fois.pdf p.1;;"2,6";2;2;
+20;Combien coûte une attestation de résidence ?;Timbre fiscal de 5 dinars;"Voici le coût de l’attestation de résidence :
+
+## Attestation de résidence
+
+### Coût
+- Timbre fiscal de **5 dinars** [attestation_residence.pdf, p. 1]  
+- Timbre fiscal de **5 DT** (équivalent) [guide_orientation_citoyen.pdf, p. 2]  ";attestation_residence.pdf p.1 | attestation_residence.pdf p.1 | guide_orientation_citoyen.pdf p.2 | CIN_premiere_fois.pdf p.1 | CIN_modification_donnees.pdf p.1;;"1,2";2;2;
+21;Où faire légaliser ma signature ?;Bureau d'état civil de l'arrondissement municipal;"Voici où vous devez vous rendre pour faire légaliser votre signature :
+
+## Légalisation de signature
+
+### Où déposer
+- Au bureau d'état civil de l'arrondissement municipal de votre commune : c’est l’organisme chargé de la légalisation de signature. [legalisation_signature.pdf, p. 1]  
+- Vous devez vous présenter directement à ce service pour déposer votre document. [legalisation_signature.pdf, p. 1]  ";legalisation_signature.pdf p.1 | legalisation_signature.pdf p.1 | attestation_residence.pdf p.1 | guide_orientation_citoyen.pdf p.2 | guide_orientation_citoyen.pdf p.1;;"1,9";2;2;
+22;Un enfant mineur peut-il voyager avec l'autorisation d'un seul parent ?;"Oui : autorisation de l'un des deux parents, du tuteur ou de la personne à qui la garde a été confiée";"Le voyage d’un mineur est autorisé dès lors qu’il possède l’autorisation d’un seul de ses parents (ou du tuteur ou de la personne à qui la garde a été confiée).  
+
+## Voyage d’un mineur avec l’autorisation d’un seul parent  
+
+- L’autorisation du voyage du mineur peut être donnée par **l’un des deux parents** ; il n’est pas nécessaire d’obtenir l’accord des deux parents [loi_2015-46_passeports_mineurs.pdf, p. 2].  
+- Cette même règle est rappelée dans le guide d’orientation : le voyage du mineur est soumis à l’autorisation **de l’un des deux parents**, du tuteur ou de toute personne à qui la garde a été confiée [guide_orientation_citoyen.pdf, p. 2].  ";loi_2015-46_passeports_mineurs.pdf p.2 | guide_orientation_citoyen.pdf p.2 | loi_75-40_passeports.pdf p.2 | passeport_deterioration_etranger.pdf p.1 | passeport_premiere_fois_etranger.pdf p.1;;"1,5";2;2;
+23;Dans quel délai faut-il déclarer une naissance ?;10 jours (15 jours hors commune ou à l'étranger);"Voici la réponse :
+
+## Déclaration d’une naissance
+
+- Le délai légal pour déclarer une naissance survenue hors du périmètre communal et à l’étranger est de **quinze jours** à compter de l’événement [loi_57-3_etat_civil.pdf, p. 3].";loi_57-3_etat_civil.pdf p.3 | loi_57-3_etat_civil.pdf p.4 | CIN_premiere_fois.pdf p.1 | CIN_premiere_fois.pdf p.1 | CIN_renouvellement.pdf p.1;;"2,6";1;2;Ne donne que le cas des 15 jours (hors commune / étranger) : il manque le délai normal de 10 jours.
+24;Dans quel délai faut-il déclarer un décès ?;3 jours;"Voici la réponse concise :
+
+## Déclaration de décès
+
+### Délai
+- Le délai de déclaration des décès est de trois jours. [loi_57-3_etat_civil.pdf, p. 7]";loi_57-3_etat_civil.pdf p.7 | loi_2024-22_CIN.pdf p.2 | loi_57-3_etat_civil.pdf p.9 | guide_orientation_citoyen.pdf p.2;;"2,4";2;2;
+25;Comment corriger une erreur dans un acte de naissance ?;Rectification ordonnée par le président du tribunal de première instance;"Voici la procédure pour corriger une erreur dans un acte de naissance :
+
+## Rectification d’un acte de naissance
+
+### Où déposer la demande
+- La demande de rectification doit être adressée **au tribunal qui a déclaré la naissance** : c’est ce tribunal qui statue sur la modification de l’acte [loi_57-3_etat_civil.pdf, p. 10].
+
+### Documents à fournir
+- **Jugement ou décision judiciaire** justifiant la rectification (ex. jugement de rectification) [loi_57-3_etat_civil.pdf, p. 10].
+
+### Délai et coût
+- Aucun délai ni coût spécifiques ne sont mentionnés dans les extraits fournis.  
+
+*Note : toute fausse déclaration visant à obtenir une rectification est passible d’une peine d’emprisonnement d’un an et d’une amende de 240 dinars [loi_57-3_etat_civil.pdf, p. 10].*";CIN_modification_donnees.pdf p.1 | CIN_renouvellement.pdf p.1 | loi_57-3_etat_civil.pdf p.4 | loi_57-3_etat_civil.pdf p.10 | extrait_naissance.pdf p.1;formulaire_CIN.pdf;"1,9";1;1;"Ne cite pas le président du tribunal de première instance. Le « jugement à fournir » est une mauvaise lecture de la loi (le jugement est le résultat, pas une pièce à fournir). Formulaire CIN proposé à tort."
+26;Que devient la puce électronique du passeport en cas de perte ?;Elle est désactivée;"En cas de perte, la puce électronique du passeport est désactivée.  
+
+## Passeport  
+
+### Que devient la puce électronique en cas de perte ?  
+- La puce électronique est désactivée en cas de perte ou de vol ou de détérioration du passeport. [loi_2024-23_passeports.pdf, p. 2]";loi_2024-23_passeports.pdf p.2 | loi_2024-22_CIN.pdf p.2 | loi_2024-23_passeports.pdf p.1 | loi_2024-22_CIN.pdf p.3 | CIN_perte_vol_deterioration.pdf p.1;;"1,9";2;2;
+27;Quelles raisons peuvent empêcher la délivrance d'un passeport ?;"Mineur sans autorisation, obligations militaires, poursuites judiciaires, ordre public";"Voici les motifs qui peuvent bloquer la délivrance d’un passeport :
+
+## Raisons pouvant empêcher la délivrance d’un passeport
+
+- Le demandeur est mineur ou interdit et ne fournit pas l’autorisation d’un parent, du tuteur légal, de la mère gardienne ou du représentant légal [loi_75-40_passeports.pdf, p. 2]  
+- En cas de désaccord entre les titulaires de la puissance paternelle et la mère gardienne, l’autorité administrative doit suivre la décision du tribunal compétent [loi_75-40_passeports.pdf, p. 2]  
+- Le demandeur est en âge d’être soumis aux obligations militaires et ne peut pas présenter une attestation d’exemption ou de sursis [passeport_perte_tunisie.pdf, p. 1]  
+- Le Parquet a requis la suspension du passeport parce que le demandeur fait l’objet de poursuites judiciaires, est recherché pour crime ou délit, ou doit purger une peine de prison [passeport_perte_tunisie.pdf, p. 1]  
+- Le passeport est refusé pour des raisons d’ordre public, de sécurité ou de nature à nuire à la bonne réputation de la Tunisie [passeport_perte_tunisie.pdf, p. 1]  ";passeport_perte_tunisie.pdf p.1 | loi_75-40_passeports.pdf p.2 | loi_75-40_passeports.pdf p.3 | passeport_perte_etranger.pdf p.1 | passeport_deterioration_etranger.pdf p.1;formulaire_passeport.pdf;2;2;2;
+28;Combien de temps faut-il pour obtenir un duplicata de passeport quand on vit à l'étranger ?;15 jours;"Voici la durée indiquée :
+
+## Duplicata du passeport (résident à l'étranger)
+
+### Délai
+- 15 jours [**passeport_perte_etranger.pdf**, p. 1]";passeport_perte_etranger.pdf p.1 | passeport_perte_etranger.pdf p.1 | passeport_premiere_fois_etranger.pdf p.1 | guide_orientation_citoyen.pdf p.1 | passeport_renouvellement_etranger.pdf p.1;formulaire_passeport.pdf | autorisation_parentale_consulat.pdf;"1,6";2;2;
+29;Combien de temps prend une légalisation de signature ?;"Dans l'heure, sans frais (0 TND)";"Voici la réponse à votre question :
+
+## Légalisation de signature (Tunisie)
+
+### Durée
+- La légalisation de signature est effectuée **dans l'heure** après le dépôt du document. [legalisation_signature.pdf, p. 1]";legalisation_signature.pdf p.1 | legalisation_signature.pdf p.1 | CIN_premiere_fois.pdf p.1 | loi_2024-22_CIN.pdf p.2 | CIN_modification_donnees.pdf p.1;;"1,4";2;2;"Il manque « sans frais », mais la question porte seulement sur le délai."
+30;Quelle case cocher sur le formulaire de carte d'identité en cas de perte ?;La case n° 2 « perte » (dhayaa);"Voici la case à cocher sur le formulaire de demande de carte d'identité nationale lorsqu'il s'agit d'une perte :
+
+## Carte d'identité nationale – perte
+
+### Case à cocher
+- **Case n° 2 « perte » (dhayaa)** : il faut cocher cette case pour signaler la perte de la carte d'identité. [CIN_perte_vol_deterioration.pdf, p. 1]  
+- Confirmation du même choix dans le guide d'orientation du citoyen. [guide_orientation_citoyen.pdf, p. 2]";CIN_perte_vol_deterioration.pdf p.1 | CIN_renouvellement.pdf p.1 | CIN_modification_donnees.pdf p.1 | guide_orientation_citoyen.pdf p.2 | CIN_premiere_fois.pdf p.1;formulaire_CIN.pdf;"3,6";2;2;
+31;Comment obtenir un permis de conduire ?;Hors sujet : le chatbot doit dire qu'il ne trouve pas l'information;Je ne trouve pas cette information dans les documents.;legalisation_signature.pdf p.1 | CIN_perte_vol_deterioration.pdf p.1 | guide_orientation_citoyen.pdf p.2 | passeport_renouvellement_etranger.pdf p.1 | attestation_residence.pdf p.1;;"2,2";2;2;Refus correct.
+32;Quel temps fait-il à Tunis aujourd'hui ?;Hors sujet : le chatbot doit dire qu'il ne trouve pas l'information;Je ne trouve pas cette information dans les documents.;loi_2015-46_passeports_mineurs.pdf p.2 | passeport_premiere_fois_renouvellement_tunisie.pdf p.1 | passeport_renouvellement_etranger.pdf p.1 | passeport_premiere_fois_etranger.pdf p.1 | passeport_deterioration_etranger.pdf p.1;;"1,3";2;2;Refus correct.
+33;Comment créer une entreprise en Tunisie ?;Hors sujet : le chatbot doit dire qu'il ne trouve pas l'information;Je ne trouve pas cette information dans les documents.;CIN_premiere_fois.pdf p.1 | extrait_naissance.pdf p.1 | passeport_premiere_fois_renouvellement_tunisie.pdf p.1 | passeport_premiere_fois_renouvellement_tunisie.pdf p.1 | passeport_deterioration_tunisie.pdf p.1;;"3,2";2;2;Refus correct.
+34;Comment ouvrir un compte bancaire ?;Hors sujet : le chatbot doit dire qu'il ne trouve pas l'information;Je ne trouve pas cette information dans les documents.;CIN_renouvellement.pdf p.1 | attestation_residence.pdf p.1 | guide_orientation_citoyen.pdf p.1 | passeport_deterioration_tunisie.pdf p.1 | CIN_perte_vol_deterioration.pdf p.1;;"3,4";2;2;Refus correct.
+35;Quel est le prix d'un billet de train entre Tunis et Sousse ?;Hors sujet : le chatbot doit dire qu'il ne trouve pas l'information;Je ne trouve pas cette information dans les documents.;passeport_premiere_fois_renouvellement_tunisie.pdf p.1 | passeport_renouvellement_etranger.pdf p.1 | loi_75-40_passeports.pdf p.5 | passeport_renouvellement_etranger.pdf p.1 | passeport_premiere_fois_etranger.pdf p.1;;"2,8";2;2;Refus correct.
+;;;;;;;;;

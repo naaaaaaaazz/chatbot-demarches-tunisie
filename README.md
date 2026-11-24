@@ -1,7 +1,7 @@
 # 🏛️ Assistant des démarches administratives tunisiennes
 
 Chatbot **RAG** (*Retrieval-Augmented Generation*) qui répond aux questions des citoyens sur la **carte d'identité nationale**, le **passeport** (en Tunisie et à l'étranger) et les **services municipaux**, uniquement à partir de documents officiels.
-Chaque réponse **cite ses sources** sous la forme `[document, page]`, et le chatbot **propose le formulaire officiel** à télécharger quand la démarche en demande un.
+Chaque réponse **cite ses sources** (`[document, page]`), propose le **formulaire officiel** quand la démarche en demande un, et renvoie vers les **sites officiels** d'où viennent les documents.
 
 > Mini-projet – Sujet 6 : *Chatbot intelligent basé sur les documents administratifs*.
 
@@ -10,11 +10,14 @@ Chaque réponse **cite ses sources** sous la forme `[document, page]`, et le cha
 ## ✨ Fonctionnalités
 
 - Questions en langage naturel, avec une **interface de conversation** (Streamlit).
-- Réponses **fondées uniquement sur les documents**, avec une citation `[fichier, p. X]` après chaque information.
-- **« Je ne trouve pas cette information dans les documents »** pour les questions hors sujet.
+- Réponses **fondées uniquement sur les documents**, organisées en rubriques (étapes, documents à fournir, coût, délai), avec une **source numérotée** après chaque information.
+- **« Je ne trouve pas cette information dans les documents »** pour les questions hors sujet. Dans ce cas, aucune source ni aucun formulaire n'est affiché.
 - **Filtre selon la situation** : en Tunisie (police, municipalité) ou à l'étranger (consulat). Ce filtre est choisi par l'utilisateur ou détecté automatiquement dans la question.
-- **Bouton de téléchargement du formulaire** correspondant à la démarche (CIN, passeport, autorisation parentale).
-- **100 % local et gratuit** : le modèle de langage tourne sur l'ordinateur avec Ollama. Aucune clé API, aucune donnée envoyée sur internet.
+- **Formulaires officiels** : aperçu dans la page et téléchargement (CIN, passeport, autorisation parentale).
+- **Sources consultables** : chaque PDF cité peut être ouvert dans la page, à la bonne page.
+- **Sites officiels** : les liens écrits dans les PDF utilisés sont affichés sous la réponse (ils ne sont jamais choisis par le LLM).
+- **Rapide** : réponse en **≈ 2 secondes** grâce à l'API Groq, avec **repli automatique sur un LLM local** (Ollama) si l'API n'est pas disponible.
+- **Mémoire des réponses** : une question déjà posée s'affiche immédiatement.
 
 ---
 
@@ -26,8 +29,9 @@ PDF ──► extraction ──► nettoyage ──► découpage ──► embe
         (pymupdf)      (regex)       (600 car.)    (e5-base)      (base vectorielle)
 
 QUESTION → RÉPONSE
-question ──► embedding ──► recherche des 5 meilleurs extraits ──► prompt + extraits ──► LLM (Ollama) ──► réponse citée
-                           (filtre Tunisie/étranger)                                    qwen2.5:3b      + formulaire
+question ──► embedding ──► 5 meilleurs extraits ──► prompt + extraits ──► LLM ──────────────► réponse citée
+                           (filtre Tunisie/étranger)                      Groq : gpt-oss-120b      + formulaire
+                                                                          secours : Ollama qwen2.5:3b + sources
 ```
 
 | Étape | Fichier | Rôle |
@@ -37,10 +41,11 @@ question ──► embedding ──► recherche des 5 meilleurs extraits ──
 | 3 | `src/decoupage.py` | Découpe en chunks de 600 caractères (chevauchement de 80) et ajoute les métadonnées : source, page, type, public |
 | 4 | `src/embeddings.py` | Transforme chaque chunk en vecteur de 768 nombres (`intfloat/multilingual-e5-base`) |
 | 5 | `src/indexation.py` | Stocke les vecteurs dans ChromaDB et fait la recherche (avec les améliorations ci-dessous) |
-| 6 | `src/generation.py` | Construit le prompt (règles + extraits) et fait rédiger la réponse par `qwen2.5:3b` via Ollama |
+| 6 | `src/generation.py` | Construit le prompt (règles + extraits), appelle le LLM (Groq, ou Ollama en secours) et remet les citations au bon format |
 | 7 | `src/choix_formulaire.py` | Choisit le formulaire à proposer, à partir des fiches citées dans la réponse |
-| 7 | `src/app.py` | Interface web Streamlit (conversation, formulaires, sources) |
-| 8 | `src/evaluation_*.py`, `src/comparer_chunks.py` | Évaluation de la recherche et des réponses |
+| 7 | `src/app.py` | Interface web Streamlit (conversation, formulaires, sites officiels, sources) |
+| 8 | `src/evaluation_*.py`, `src/comparer_chunks.py`, `src/calcul_resultats.py` | Évaluation de la recherche et des réponses |
+| 9 | `tests/test_projet.py` | Tests fonctionnels |
 
 ### Améliorations de la recherche
 - **Expansion de requête** : « cin » devient « carte d'identité nationale (CIN) », et « passport » devient « passeport ».
@@ -51,10 +56,25 @@ question ──► embedding ──► recherche des 5 meilleurs extraits ──
 
 ---
 
+## 🧰 Choix des outils
+
+| Besoin | Outil choisi | Pourquoi |
+|---|---|---|
+| Lire les PDF | **PyMuPDF** | Rapide, garde le numéro de page, permet aussi d'afficher les pages en image |
+| Découper le texte | **LangChain Text Splitters** | Découpe en respectant les phrases et les paragraphes, avec chevauchement |
+| Embeddings | **Sentence-Transformers** (`multilingual-e5-base`) | Gratuit, local, bon en français, recommandé par le sujet |
+| Base vectorielle | **ChromaDB** | Enregistre la base sur le disque et permet de filtrer par métadonnées (Tunisie / étranger) |
+| LLM | **Groq** (`openai/gpt-oss-120b`) | Très rapide (≈ 2 s), meilleures réponses que le modèle local, offre gratuite |
+| LLM de secours | **Ollama** (`qwen2.5:3b`) | Gratuit et local : l'application marche même sans Internet, mais lentement |
+| Interface | **Streamlit** | Interface de chat moderne en Python, sans HTML/JavaScript à écrire |
+| Clé API | **python-dotenv** | La clé est lue dans `.env` et n'est jamais écrite dans le code |
+
+---
+
 ## 📁 Structure du projet
 
 ```
-documents_admin_tunisie/
+chatbot-demarches-tunisie/
 ├── data/
 │   ├── procedures/        14 fiches pratiques (CIN, Passeport, Municipalite)
 │   ├── reglements/        5 lois (57-3, 75-40, 2015-46, 2024-22, 2024-23)
@@ -62,9 +82,11 @@ documents_admin_tunisie/
 │   └── processed/         fichiers générés (pages, chunks, vecteurs) – non versionnés
 ├── formulaires/           formulaires officiels (PDF) + formulaires.csv (fiche → formulaire)
 ├── images/                illustrations de l'interface
-├── evaluation/            questions de test et résultats de l'évaluation
+├── evaluation/            questions de test et résultats (recherche, réponses Groq et Ollama)
 ├── src/                   tout le code Python
+├── tests/                 tests fonctionnels
 ├── .streamlit/config.toml thème de l'interface
+├── .env.example           modèle du fichier de configuration (sans clé)
 ├── SOURCES.md             origine de chaque document (URL + date de consultation)
 ├── requirements.txt
 └── README.md
@@ -76,12 +98,12 @@ documents_admin_tunisie/
 
 ## ⚙️ Installation (Windows)
 
-**Prérequis** : Python 3.12 ou plus récent, et [Ollama](https://ollama.com).
+**Prérequis** : Python 3.12 ou plus récent. Optionnel : [Ollama](https://ollama.com) pour le LLM de secours.
 
 ```powershell
 # 1. Récupérer le projet
 git clone https://github.com/naaaaaaaazz/chatbot-demarches-tunisie.git
-cd documents_admin_tunisie
+cd chatbot-demarches-tunisie
 
 # 2. Créer et activer l'environnement virtuel
 py -m venv .venv
@@ -90,11 +112,26 @@ py -m venv .venv
 # 3. Installer les bibliothèques
 pip install -r requirements.txt
 
-# 4. Télécharger le modèle de langage (≈ 2 Go)
+# 4. (Optionnel) LLM de secours local (≈ 2 Go)
 ollama pull qwen2.5:3b
 ```
 
 Au premier lancement, le modèle d'embeddings `multilingual-e5-base` (≈ 1 Go) est téléchargé automatiquement.
+
+### 🔑 Configuration de l'API Groq
+1. Créer une clé gratuite sur [console.groq.com](https://console.groq.com) → **API Keys** → **Create API Key**.
+2. Copier `.env.example` en `.env` (à la racine du projet) et remplacer `ta_cle_ici` par la clé :
+   ```
+   GROQ_API_KEY=ta_cle_ici
+   LLM_FOURNISSEUR=groq
+   GROQ_MODELE=openai/gpt-oss-120b
+   ```
+3. Le fichier `.env` est dans `.gitignore` : **la clé n'est jamais envoyée sur GitHub**.
+
+### 🔁 Sans clé : le LLM de secours (Ollama)
+Si `.env` n'existe pas, si Internet est coupé ou si le quota gratuit de Groq est dépassé, l'application affiche « API indisponible » dans le terminal et répond **automatiquement avec Ollama** (`qwen2.5:3b`, sur l'ordinateur).
+Cela fonctionne **seulement si** Ollama est installé ([ollama.com](https://ollama.com)) et si le modèle a été téléchargé (`ollama pull qwen2.5:3b`, étape 4 de l'installation). Sinon, l'application affiche une erreur.
+Avec Ollama, une réponse prend environ 2 minutes (sans carte graphique). Pour utiliser uniquement Ollama, mettre `LLM_FOURNISSEUR=ollama` dans `.env`.
 
 ---
 
@@ -111,13 +148,31 @@ python src/indexation.py
 streamlit run src/app.py
 ```
 
-Le navigateur s'ouvre sur **http://localhost:8501**. Ollama doit être lancé.
+Le navigateur s'ouvre sur **http://localhost:8501**.
+⚠️ Désactiver la traduction automatique de Chrome sur cette page : elle modifie la page pendant l'affichage de la réponse et provoque une erreur `removeChild`.
+
+### Tests fonctionnels
+```powershell
+python tests/test_projet.py
+```
+| Test | Ce qu'il vérifie |
+|---|---|
+| Base | ChromaDB contient les 232 chunks |
+| Recherche | une question sur la CIN trouve une fiche CIN dans les 3 premiers résultats |
+| Citations | les citations mal écrites par le LLM (`【…】`, gras, italique) sont remises au format `[fichier.pdf, p. X]` |
+| Réponse | une vraie question reçoit une réponse qui cite un PDF |
+| Refus | une question hors sujet donne « Je ne trouve pas » et aucun formulaire |
+| Sécurité | aucune clé API dans le code, et `.env` est ignoré par git |
+
+Résultat : **6 / 6 tests réussis**.
 
 ### Évaluation
 ```powershell
-python src/evaluation_recherche.py   # rappel@3, rappel@5, MRR (recherche simple vs améliorée)
-python src/comparer_chunks.py        # comparaison des chunks de 300 et 600 caractères
-python src/evaluation_reponses.py    # génère les réponses des 35 questions, à noter à la main
+python src/evaluation_recherche.py                     # rappel@3, rappel@5, MRR (recherche simple vs améliorée)
+python src/comparer_chunks.py                          # comparaison des chunks de 300 et 600 caractères
+python src/evaluation_reponses.py                      # génère les réponses des 35 questions, à noter à la main
+python src/calcul_resultats.py                         # résultats de la notation (réponses Groq)
+python src/calcul_resultats.py reponses_ollama.csv     # résultats de la notation (anciennes réponses Ollama)
 ```
 
 ---
@@ -141,40 +196,42 @@ Jeu de test : **30 questions** dans le sujet et **5 questions hors sujet** (`eva
 
 **Choix de k** : avec k=3, le bon document est envoyé au LLM dans 93 % des cas, contre **100 % avec k=5**. On a donc retenu **k=5**.
 
-### Réponses du LLM (notation manuelle, de 0 à 2)
-| Mesure | Résultat |
-|---|---|
-| Exactitude moyenne (30 questions) | **1,53 / 2** (20 réponses à 2, 6 à 1, 4 à 0) |
-| Fidélité moyenne (30 questions) | **1,83 / 2** (25 à 2, 5 à 1, aucune à 0) |
-| Refus corrects (5 questions hors sujet) | **5 / 5** |
-| Temps moyen par réponse | **114 s** (de 38 à 282 s) |
+### Réponses : comparaison des deux LLM (notation manuelle, de 0 à 2)
+La recherche est la même dans les deux cas : seul le LLM change.
+
+| Mesure | Ollama `qwen2.5:3b` (local) | **Groq `gpt-oss-120b` (API, version finale)** |
+|---|---|---|
+| Exactitude moyenne (30 questions) | 1,53 / 2 (20 à 2, 6 à 1, 4 à 0) | **1,77 / 2** (24 à 2, 5 à 1, 1 à 0) |
+| Fidélité moyenne (30 questions) | 1,83 / 2 (25 à 2, 5 à 1, 0 à 0) | **1,93 / 2** (28 à 2, 2 à 1, 0 à 0) |
+| Refus corrects (5 questions hors sujet) | 5 / 5 | **5 / 5** |
+| Temps moyen par réponse | 114 s (de 38 à 282 s) | **≈ 2 s** (de 1 à 5 s) |
+
+Les réponses notées sont dans `evaluation/reponses_llm.csv` (Groq) et `evaluation/reponses_ollama.csv` (Ollama).
 
 **Ce que montre l'évaluation :**
+- le passage à l'API est **environ 50 fois plus rapide** et améliore à la fois l'exactitude et la fidélité ;
 - les questions **précises** (prix, délais, nombre de photos, case du formulaire) obtiennent presque toutes 2/2 ;
-- le chatbot **n'invente pas** (aucune fidélité à 0) et **refuse toujours** le hors sujet ;
-- ses erreurs viennent du **mélange de deux démarches** (passeport et CIN), de **réponses incomplètes**, et de **deux refus à tort** sur des textes de loi pourtant bien retrouvés (Q22, Q23).
+- le chatbot **refuse toujours** le hors sujet et n'invente presque jamais (aucune fidélité à 0) ;
+- les erreurs restantes viennent surtout de la **recherche** : quand la bonne fiche n'arrive qu'en 4ᵉ ou 5ᵉ position (Q4, Q12), le LLM ne reçoit pas sa page entière et la liste des papiers est incomplète. Il y a aussi quelques **réponses incomplètes** (Q14, Q23) et deux réponses avec **des étapes ajoutées sans source** (Q13, Q25).
 
-**Bug découvert grâce à l'évaluation** : le formulaire CIN était proposé pour des questions sans rapport (extrait de naissance, légalisation, permis de conduire…). Le choix du formulaire a été corrigé : plus de formulaire après un refus, et le plan B ne regarde que le 1ᵉʳ résultat. Une simulation sur les 35 réponses fait passer les formulaires proposés à tort de **9 à 1**.
+**Bug découvert grâce à l'évaluation** : le formulaire CIN était proposé pour des questions sans rapport (extrait de naissance, légalisation, permis de conduire…). Le choix du formulaire a été corrigé : plus de formulaire après un refus, et le plan B ne regarde que le 1ᵉʳ résultat. Les formulaires proposés à tort sont passés de **9 à 1**.
 
 ---
 
 ## ⚠️ Limites
 
-- **Lenteur** : sur un PC sans carte graphique, la recherche prend environ 0,3 s, mais la génération prend 2 à 4 minutes par réponse.
-- **Petit modèle (3 milliards de paramètres)** : pour les questions ouvertes, les réponses sont parfois trop longues ou coupées, et un élément d'une longue liste est parfois oublié.
+- **Dépendance à l'API** : il faut Internet et une clé Groq. L'offre gratuite limite le nombre de requêtes par minute et par jour. En secours, Ollama fonctionne hors ligne mais prend 2 à 4 minutes par réponse.
+- **Données envoyées à l'API** : la question et les extraits des documents (publics) sont envoyés à Groq. Il ne faut donc pas écrire d'informations personnelles dans la question.
+- **Réponses variables** : un LLM ne répond jamais deux fois exactement pareil. Les notes de l'évaluation correspondent à une exécution précise.
+- **Recherche** : si la bonne fiche est mal classée, la réponse peut être incomplète (voir Q4).
 - **Sensibilité à la formulation** : les fautes de frappe et les abréviations peuvent gêner la recherche. Elles sont en partie corrigées par l'expansion de requête.
 - **Hors sujet** : les scores des questions hors sujet (0,81 à 0,84) sont proches de ceux des vraies questions (≈ 0,85). C'est donc le LLM, et non un seuil, qui décide de refuser.
+- **Mémoire des réponses** : elle reconnaît seulement une question écrite exactement pareil, et elle est vidée quand on relance l'application.
 - Les documents ont été consultés en **novembre 2026** : les démarches et les tarifs peuvent changer.
-
-## 🔭 Pistes d'amélioration
-Un modèle plus grand (`qwen2.5:7b`) ou un GPU, une recherche hybride (BM25 + embeddings), un reranking, et l'affichage de la réponse mot par mot (streaming).
 
 ---
 
 ## 🔒 Sources et données personnelles
 - L'origine de chaque document est dans [`SOURCES.md`](SOURCES.md).
 - Les exemples de documents montrés dans l'interface (CIN, extrait de naissance) ont été **floutés** pour masquer toutes les données personnelles.
-- ⚠️ Cet assistant aide à s'orienter, mais il ne remplace pas l'administration. Vérifiez toujours auprès du service concerné.
-
-## 🛠️ Technologies
-Python · PyMuPDF · LangChain Text Splitters · Sentence-Transformers (`intfloat/multilingual-e5-base`) · ChromaDB · Ollama (`qwen2.5:3b`) · Streamlit
+- La clé API reste dans `.env`, qui n'est jamais publié.

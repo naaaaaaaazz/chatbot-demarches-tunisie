@@ -12,7 +12,7 @@ import pymupdf
 import streamlit as st
 
 from embeddings import charger_modele
-from generation import ouvrir_collection, preparer, generer_reponse_flux
+from generation import ouvrir_collection, preparer, generer_reponse_flux, nettoyer_citations
 from choix_formulaire import charger_correspondances, trouver_formulaires, DOSSIER_FORMULAIRES
 
 st.set_page_config(page_title="Assistant démarches administratives",
@@ -315,6 +315,11 @@ def afficher_message(i, message):
         else:
             st.markdown(mettre_en_forme(message["contenu"]), unsafe_allow_html=True)
         if message["role"] == "assistant":
+            if "je ne trouve pas" in message["contenu"].lower():
+                # Information absente des documents : pas de formulaires, sites ni sources
+                st.caption("Aucun document du projet ne contient cette information. "
+                           "Le chatbot couvre la carte d'identité, le passeport et les services municipaux.")
+                return
             if message["formulaires"]:
                 st.markdown('<p class="titre-rubrique">📝 Formulaires à remplir</p>',
                             unsafe_allow_html=True)
@@ -400,6 +405,7 @@ if question:
             with st.spinner("Recherche dans les documents..."):
                 resultats, contexte = preparer(question, collection, modele, public=public)
             reponse = st.write_stream(generer_reponse_flux(question, contexte))
+            reponse = nettoyer_citations(reponse)     # même format de citation partout
             memoire[cle] = (reponse, resultats)
     formulaires = trouver_formulaires(reponse, resultats, correspondances)
 

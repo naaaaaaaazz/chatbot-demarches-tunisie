@@ -6,6 +6,7 @@ Small-to-big : on cherche avec de petits chunks, mais pour la meilleure fiche
 de procédure, on envoie au LLM sa page entière (la liste des papiers n'est plus coupée).
 """
 import os
+import re
 import time
 
 import chromadb
@@ -36,6 +37,8 @@ Règles :
      (règle 8) ET présente dans les extraits ;
    - sous chaque rubrique, une liste où chaque point finit par sa source :
      - <information> [nom_du_fichier.pdf, p. X]
+   Écris chaque source EXACTEMENT ainsi : [nom_du_fichier.pdf, p. X], avec des crochets
+   droits [ ], sans gras ni italique, et ne répète pas la même information pour chaque fichier.
 4. Si une fiche de procédure répond à la question, utilise-la EN PRIORITÉ.
    N'utilise les lois que si la question porte sur la loi ou si aucune fiche ne répond.
    Un extrait sur la carte d'identité ne sert pas pour une question sur le passeport.
@@ -90,6 +93,16 @@ def construire_messages(question, contexte):
     ]
 
 
+def nettoyer_citations(texte):
+    """Met toutes les citations au même format [fichier.pdf, p. X].
+    Le LLM écrit parfois 【fichier.pdf, p. 1】, [**fichier.pdf**, p. 1] ou *[fichier.pdf, p. 1]*."""
+    texte = texte.replace("【", "[").replace("】", "]")          # crochets chinois -> crochets droits
+    texte = re.sub(r"\*+\[", "[", texte)                          # *[ ou **[  -> [
+    texte = re.sub(r"\]\*+", "]", texte)                          # ]* ou ]**  -> ]
+    return re.sub(r"\[([^\[\]]*\.pdf[^\[\]]*)\]",                 # gras/italique DANS les crochets
+                  lambda m: "[" + m.group(1).replace("*", "").strip() + "]", texte)
+
+
 def options_api():
     """Réglages de l'API. Les modèles « gpt-oss » réfléchissent avant de répondre :
     on limite cette réflexion (reasoning_effort) et on leur laisse plus de tokens."""
@@ -111,12 +124,12 @@ def generer_reponse(question, contexte):
         try:
             reponse = client_api().chat.completions.create(
                 model=MODELE_API, messages=messages, **options_api())
-            return reponse.choices[0].message.content
+            return nettoyer_citations(reponse.choices[0].message.content)
         except Exception as erreur:
             print(f"API indisponible ({erreur}) : repli sur Ollama")
     reponse = ollama.chat(model=NOM_LLM, messages=messages,
                           options=OPTIONS_LLM, keep_alive="30m")
-    return reponse["message"]["content"]
+    return nettoyer_citations(reponse["message"]["content"])
 
 
 def generer_reponse_flux(question, contexte):

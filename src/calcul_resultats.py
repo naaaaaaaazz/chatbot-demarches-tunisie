@@ -1,12 +1,17 @@
 """
 Étape 8d : calculer les résultats de la notation manuelle
-(evaluation/reponses_llm.csv, colonnes exactitude et fidelite remplies de 0 à 2).
+(colonnes exactitude et fidelite remplies de 0 à 2).
+
+  python src/calcul_resultats.py                      -> evaluation/reponses_llm.csv (Groq)
+  python src/calcul_resultats.py reponses_ollama.csv  -> les anciens résultats (Ollama)
 """
 import csv
+import sys
 from pathlib import Path
 
 DOSSIER_PROJET = Path(__file__).resolve().parent.parent
-FICHIER_REPONSES = DOSSIER_PROJET / "evaluation" / "reponses_llm.csv"
+NOM_FICHIER = sys.argv[1] if len(sys.argv) > 1 else "reponses_llm.csv"
+FICHIER_REPONSES = DOSSIER_PROJET / "evaluation" / NOM_FICHIER
 NB_QUESTIONS_DANS_LE_SUJET = 30
 
 
@@ -18,7 +23,8 @@ def lire_lignes():
     except UnicodeDecodeError:
         contenu = octets.decode("cp1252")  # fichier réenregistré par Excel (accents Windows)
     separateur = ";" if contenu.splitlines()[0].count(";") > 0 else ","
-    return list(csv.DictReader(contenu.splitlines(), delimiter=separateur))
+    lignes = csv.DictReader(contenu.splitlines(), delimiter=separateur)
+    return [l for l in lignes if (l.get("id") or "").strip()]   # ignore les lignes vides ajoutées par Excel
 
 
 def moyenne(valeurs):
@@ -26,6 +32,7 @@ def moyenne(valeurs):
 
 
 if __name__ == "__main__":
+    print(f"Fichier analysé : {NOM_FICHIER}")
     lignes = lire_lignes()
     non_notees = [l["id"] for l in lignes if not l["exactitude"].strip() or not l["fidelite"].strip()]
     if non_notees:

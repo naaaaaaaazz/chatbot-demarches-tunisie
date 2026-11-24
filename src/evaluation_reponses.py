@@ -18,7 +18,7 @@ DOSSIER_PROJET = Path(__file__).resolve().parent.parent
 FICHIER_REPONSES = DOSSIER_PROJET / "evaluation" / "reponses_llm.csv"
 COLONNES = ["id", "question", "reponse_attendue", "reponse_chatbot", "sources",
             "formulaires", "temps_s", "exactitude", "fidelite", "commentaire"]
-
+PAUSE_S = 25   # pause entre deux questions, pour rester dans la limite gratuite de Groq
 
 def ids_deja_faits():
     """Renvoie les numéros des questions déjà présentes dans le fichier."""
@@ -59,10 +59,13 @@ if __name__ == "__main__":
                 "reponse_chatbot": reponse,
                 "sources": " | ".join(f"{r['source']} p.{r['page']}" for r in resultats),
                 "formulaires": " | ".join(fichier for fichier, _ in formulaires),
-                "temps_s": round(duree, 1),
+                "temps_s": str(round(duree, 1)).replace(".", ","),   # virgule : lisible par Excel en français
                 "exactitude": "", "fidelite": "", "commentaire": "",
             })
+            
             f.flush()  # écrit tout de suite sur le disque (rien n'est perdu si ça s'arrête)
             print(f"   -> réponse enregistrée ({duree:.0f} s)")
+            if numero < len(a_faire):      # ← AJOUTE CES 2 LIGNES
+                time.sleep(PAUSE_S)        # ←
 
     print(f"\nTerminé. Fichier : {FICHIER_REPONSES.relative_to(DOSSIER_PROJET)}")
