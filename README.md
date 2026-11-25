@@ -87,6 +87,7 @@ chatbot-demarches-tunisie/
 ├── evaluation/            questions de test et résultats (recherche, réponses Groq et Ollama)
 ├── src/                   tout le code Python
 ├── tests/                 tests fonctionnels
+├── vector_db/             base ChromaDB (créée par indexation.py) – non versionnée
 ├── docs/                  rapport du projet (PDF)
 ├── .streamlit/config.toml thème de l'interface
 ├── .env.example           modèle du fichier de configuration (sans clé)
@@ -95,7 +96,7 @@ chatbot-demarches-tunisie/
 └── README.md
 ```
 
-**Corpus** : 20 PDF (14 procédures, 5 lois, 1 guide), 44 pages, 232 chunks. Les lois viennent du Journal officiel ; les fiches viennent du ministère de l'Intérieur, du SICAD et d'Idaraty (non officiel, recoupé avec le ministère quand c'était possible) : voir [`SOURCES.md`](SOURCES.md).
+**Corpus** : 20 PDF (14 procédures, 5 lois, 1 guide), 44 pages, 232 chunks. Les lois viennent du Journal officiel ; les fiches viennent du ministère de l'Intérieur, du SICAD et d'Idaraty (plateforme non officielle, recoupée avec le ministère quand c'était possible) : voir [`SOURCES.md`](SOURCES.md).
 
 ---
 
