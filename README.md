@@ -4,6 +4,8 @@ Chatbot **RAG** (*Retrieval-Augmented Generation*) qui répond aux questions des
 Chaque réponse **cite ses sources** (`[document, page]`), propose le **formulaire officiel** quand la démarche en demande un, et renvoie vers les **sites officiels** d'où viennent les documents.
 
 > Mini-projet – Sujet 6 : *Chatbot intelligent basé sur les documents administratifs*.
+>
+> 📄 **Rapport complet : [`docs/Rapport_Chatbot_RAG.pdf`](docs/Rapport_Chatbot_RAG.pdf)**
 
 ---
 
@@ -85,6 +87,7 @@ chatbot-demarches-tunisie/
 ├── evaluation/            questions de test et résultats (recherche, réponses Groq et Ollama)
 ├── src/                   tout le code Python
 ├── tests/                 tests fonctionnels
+├── docs/                  rapport du projet (PDF)
 ├── .streamlit/config.toml thème de l'interface
 ├── .env.example           modèle du fichier de configuration (sans clé)
 ├── SOURCES.md             origine de chaque document (URL + date de consultation)
@@ -92,7 +95,7 @@ chatbot-demarches-tunisie/
 └── README.md
 ```
 
-**Corpus** : 20 PDF (14 procédures, 5 lois, 1 guide), 44 pages, 232 chunks. Tous les documents viennent de sources officielles (Idaraty, ministère de l'Intérieur, JORT…) : voir [`SOURCES.md`](SOURCES.md).
+**Corpus** : 20 PDF (14 procédures, 5 lois, 1 guide), 44 pages, 232 chunks. Les lois viennent du Journal officiel ; les fiches viennent du ministère de l'Intérieur, du SICAD et d'Idaraty (non officiel, recoupé avec le ministère quand c'était possible) : voir [`SOURCES.md`](SOURCES.md).
 
 ---
 
@@ -120,7 +123,7 @@ Au premier lancement, le modèle d'embeddings `multilingual-e5-base` (≈ 1 Go) 
 
 ### 🔑 Configuration de l'API Groq
 1. Créer une clé gratuite sur [console.groq.com](https://console.groq.com) → **API Keys** → **Create API Key**.
-2. Copier `.env.example` en `.env` (à la racine du projet) et remplacer `ta_cle_ici` par la clé :
+2. Copier le modèle de configuration avec `copy .env.example .env` (à la racine du projet), puis ouvrir `.env` et remplacer `ta_cle_ici` par la clé :
    ```
    GROQ_API_KEY=ta_cle_ici
    LLM_FOURNISSEUR=groq
@@ -149,7 +152,33 @@ streamlit run src/app.py
 ```
 
 Le navigateur s'ouvre sur **http://localhost:8501**.
+
+### Lancer chaque étape séparément (facultatif)
+Chaque fichier de `src/` peut être lancé seul, depuis la racine du projet, pour voir le résultat de son étape :
+
+| Commande | Ce qu'elle fait | Ce qu'elle affiche ou crée |
+|---|---|---|
+| `python src/extraction.py` | Lit les 20 PDF page par page | Bilan (20 PDF, 44 pages) + `data/processed/pages_extraites.json` |
+| `python src/nettoyage.py` | Supprime le bruit (en-têtes, numéros de page) | Caractères avant / après + `pages_nettoyees.json` |
+| `python src/decoupage.py` | Découpe en chunks de 600 caractères | Nombre de chunks (232) + `chunks.json` |
+| `python src/embeddings.py` | Enchaîne les 3 étapes ci-dessus, puis calcule les vecteurs | `embeddings.npy` (232 vecteurs de 768 nombres) |
+| `python src/indexation.py` | Crée la base ChromaDB | Dossier `vector_db/` (232 chunks) |
+| `python src/generation.py` | Pose 4 questions de test au chatbot dans le terminal | Réponses, sources et temps de recherche / génération |
+| `python src/choix_formulaire.py` | Pose 3 questions de test et choisit le formulaire | Nombre de fiches ayant un formulaire (11), puis le formulaire proposé pour chaque question |
+| `streamlit run src/app.py` | Lance l'interface | Chatbot sur http://localhost:8501 |
+
 ⚠️ Désactiver la traduction automatique de Chrome sur cette page : elle modifie la page pendant l'affichage de la réponse et provoque une erreur `removeChild`.
+
+### 🆘 En cas de problème
+| Message ou symptôme | Cause | Solution |
+|---|---|---|
+| PowerShell refuse d'activer le venv (« l'exécution de scripts est désactivée ») | Politique de sécurité de PowerShell | `Set-ExecutionPolicy -Scope Process RemoteSigned`, puis réactiver le venv |
+| `Collection [chunks_600] does not exist` ou `FileNotFoundError: ... chunks.json` | La base n'a pas encore été construite | `python src/embeddings.py` puis `python src/indexation.py` |
+| « API indisponible » dans le terminal | Pas de `.env`, pas d'Internet, ou quota Groq dépassé | Vérifier `.env` et la connexion ; sinon la réponse vient d'Ollama (plus lente) |
+| Erreur de connexion à Ollama | Ollama n'est pas lancé, ou le modèle n'est pas téléchargé | Ouvrir Ollama, puis `ollama pull qwen2.5:3b` |
+| Erreur `removeChild` dans le navigateur | Traduction automatique de Chrome | Désactiver la traduction pour la page |
+| Port 8501 déjà utilisé | Une ancienne fenêtre Streamlit tourne encore | La fermer (Ctrl + C) ou `streamlit run src/app.py --server.port 8502` |
+| `PermissionError` sur un fichier CSV | Le fichier est ouvert dans Excel | Fermer Excel, puis relancer |
 
 ### Tests fonctionnels
 ```powershell
