@@ -248,6 +248,20 @@ Les réponses notées sont dans `evaluation/reponses_llm.csv` (Groq) et `evaluat
 
 ---
 
+## 🛠️ Problèmes rencontrés et solutions
+
+| Problème | Solution |
+|---|---|
+| Réponses lentes avec Ollama : 114 s en moyenne, jusqu'à 282 s | API Groq (`openai/gpt-oss-120b`) : 2 s environ, Ollama gardé en secours automatique |
+| « cin » trouvait la fiche du passeport | Expansion des abréviations dans la question |
+| Liste des papiers coupée entre deux chunks | Small-to-big : la page entière de la meilleure fiche est envoyée au LLM |
+| Formulaire CIN proposé à tort (9 cas sur 35) | Aucun formulaire en cas de refus, seuil de 0,84 mesuré |
+| Citations au mauvais format (【…】, gras) | Règle de format dans le prompt et fonction `nettoyer_citations()` |
+| Clé API à protéger | Clé dans `.env`, exclu par `.gitignore` |
+| Données personnelles sur les images | Images floutées |
+
+Les 15 problèmes rencontrés, avec leur cause, sont détaillés dans la partie 10 du [rapport](docs/Rapport_Chatbot_RAG.pdf).
+
 ## ⚠️ Limites
 
 - **Dépendance à l'API** : il faut Internet et une clé Groq. L'offre gratuite limite le nombre de requêtes par minute et par jour. En secours, Ollama fonctionne hors ligne mais prend 2 à 4 minutes par réponse.
