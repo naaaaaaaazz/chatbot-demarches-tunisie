@@ -1,6 +1,6 @@
 # 🏛️ Assistant des démarches administratives tunisiennes
 
-Chatbot **RAG** (*Retrieval-Augmented Generation*) qui répond aux questions des citoyens sur la **carte d'identité nationale**, le **passeport** (en Tunisie et à l'étranger) et les **services municipaux**, uniquement à partir de documents officiels.
+Chatbot **RAG** (*Retrieval-Augmented Generation*) qui répond aux questions des citoyens sur la **carte d'identité nationale**, le **passeport** (en Tunisie et à l'étranger) et les **services municipaux**, uniquement à partir de documents officiels..
 Chaque réponse **cite ses sources** (`[document, page]`), propose le **formulaire officiel** quand la démarche en demande un, et renvoie vers les **sites officiels** d'où viennent les documents.
 
 > Mini-projet – Sujet 6 : *Chatbot intelligent basé sur les documents administratifs*...
